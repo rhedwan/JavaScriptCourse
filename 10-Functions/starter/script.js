@@ -57,7 +57,7 @@ newPassport(rhedwan);
 checkIn(flight, rhedwan); */
 
 
-
+/* 
 const oneWord = function (str) {
     return str.replace(/ /g, '').toLowerCase();
 };
@@ -88,4 +88,60 @@ const high5 = function () {
 document.body.addEventListener('click', high5);
 
 
-['Ridwan', 'Uche', 'Micheal'].forEach(high5);
+['Ridwan', 'Uche', 'Micheal'].forEach(high5); */
+
+
+
+
+/* const lufthansa = {
+    airline: 'Lufthansa',
+    iataCode: 'LH',
+    bookings: [],
+    book(flightNum, name){
+        console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+        this.bookings.push({
+            flight: `${this.iataCode}${flightNum}`,
+            name:` ${name}`,
+        })
+    },
+};
+
+lufthansa.book(239, 'Ridwan Adeyemo') ;
+lufthansa.book(635, 'Bakare Galib') ;
+console.log(lufthansa);
+
+const eurowings = {
+    airline: 'Eurowings',
+    iataCode: 'EW',
+    bookings: [],
+    
+};
+
+const book = lufthansa.book ;
+// Does NOT work
+// book(23, 'Qudus Tunji');
+
+book.call(eurowings, 23, 'Qudus Tunji') ;
+console.log(eurowings);
+
+book.call(lufthansa, 239, 'Jack Dorsey') ;
+console.log(lufthansa);
+
+
+const swiss = {
+    airline: 'Swiss Air Lines',
+    iataCode: 'LX',
+    bookings: [],
+}
+book.call(swiss, 23, 'Qudus Tunji') ;
+console.log(swiss);
+
+// Apply Method
+const flightData = [546, 'George Cooper'];
+book.apply(swiss, flightData) ;
+console.log(swiss);
+
+
+book.call(swiss, ...flightData) ;
+console.log(swiss);
+ */
