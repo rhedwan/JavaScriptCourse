@@ -102,8 +102,8 @@ greeterHey('Ridwan');
 greeterHey('Pelumi');
 greet('Hello')('Adaobi'); */
 
-const greet = greeting => name => console.log(`${greeting} ${name}`);
-greet('Hello')('Jamiat');
+/* const greet = greeting => name => console.log(`${greeting} ${name}`);
+greet('Hello')('Jamiat'); */
 
 
 /* const lufthansa = {
@@ -157,4 +157,60 @@ console.log(swiss);
 
 book.call(swiss, ...flightData) ;
 console.log(swiss);
+
+
+// Bind method
+// book.call(lufthansa, 239, 'Jack Dorsey') ;
+
+const bookEW = book.bind(eurowings) ;
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+bookEW(23, 'Steven Williams');
+bookLH(45, 'Olayera Itunu')
+
+const bookEW23 = book.bind(eurowings, 23) ;
+bookEW23('Adeyemo Ridwan');
+bookEW23('Laguda Hakeem')
+
+
+// With Event Listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+    console.log(this);
+    this.planes ++ ;
+    console.log(this.planes);
+};
+// lufthansa.buyPlane();
+
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+// Partial application
+const addTax = (rate, value) =>  value + (value*rate);
+
+console.log(addTax(0.10, 100));
+
+const addVAT = addTax.bind(null, 0.23);
+// addVAT = (rate, value) =>  value + (value*0.23) ;
+
+console.log(addVAT(100));
+
+// const newAddVAT = function (rate) {
+//     return function (value) {
+//         return value  + (value*rate)
+//     }
+// };
+
+const newAddVAT = rate => value => value  + (value*rate) ;
+
+
+const returnVAT = newAddVAT(0.23) ;
+console.log(returnVAT(100));
+console.log(newAddVAT(0.23)(100));
  */
+
+const poll = {
+    question: "What is your favourite programming language?",
+    options: ["0: JavaScript", "1: Python", "2: Rust", "3:C++"],
+    // This generates [0, 0, 0, 0]. More in the next section!
+    answers: new Array(4).fill(0),
+};
