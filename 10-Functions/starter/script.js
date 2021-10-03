@@ -208,7 +208,7 @@ console.log(returnVAT(100));
 console.log(newAddVAT(0.23)(100));
  */
 
-const poll = {
+/* const poll = {
     question: "What is your favourite programming language?",
     options: ["0: JavaScript", "1: Python", "2: Rust", "3:C++"],
     // This generates [0, 0, 0, 0]. More in the next section!
@@ -238,6 +238,32 @@ document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer
 poll.displayResults.call({answers: [5, 2, 3]})
 poll.displayResults.call({answers: [5, 2, 3]}, 'string')
 poll.displayResults.call({answers: [1, 5, 3, 9, 6, 1]}, 'string')
-
+ */
 // Data 1: [5, 2, 3]
 // § Data 2: [1, 5, 3, 9, 6, 1]
+
+
+// Immediately invoked Function Expression
+const runOnce = function (){
+    console.log('This will never run again');
+};
+
+runOnce();
+
+// IIFE
+(function (){
+    console.log('This will never run again');
+    const  isPrivate = 23 ;
+})();
+
+// console.log(isPrivate);
+
+(() => console.log('This will ALSO never run again'))();
+
+{
+    const  isPrivate = 23 ;
+    var  notPrivate = 46 ;
+}
+
+// console.log(isPrivate);
+console.log(notPrivate);
