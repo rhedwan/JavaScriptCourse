@@ -242,7 +242,7 @@ poll.displayResults.call({answers: [1, 5, 3, 9, 6, 1]}, 'string')
 // Data 1: [5, 2, 3]
 // § Data 2: [1, 5, 3, 9, 6, 1]
 
-
+/* 
 // Immediately invoked Function Expression
 const runOnce = function (){
     console.log('This will never run again');
@@ -266,4 +266,21 @@ runOnce();
 }
 
 // console.log(isPrivate);
-console.log(notPrivate);
+console.log(notPrivate); */
+
+// Closures
+
+const secureBooking = function () {
+    let passengerCount = 0 ;
+    return function (){
+        passengerCount ++ ;
+        console.log(`${passengerCount} passengers`)
+    };
+};
+
+const booker = secureBooking();
+booker();
+booker();
+booker();
+
+console.dir(booker);
