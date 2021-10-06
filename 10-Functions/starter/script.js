@@ -284,7 +284,7 @@ booker();
 booker();
 
 console.dir(booker); */
-
+/* 
 // Example 1
 
 let f;
@@ -328,3 +328,12 @@ boardPassengers(180, 3);
 // setTimeout(function (){
 //     console.log('TIMER');
 // }, 1000) ;
+ */
+
+/* (function () {
+    const header = document.querySelector('h1');
+    header.style.color = 'red';
+    document.querySelector('body').addEventListener('click', function(){
+        header.style.color = 'blue';   
+    });
+})(); */
