@@ -171,3 +171,19 @@ console.log(currenciesUnique) ;
 currenciesUnique.forEach(function(value, _, map){
   console.log(`${value}: ${value}`);
 }); */
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  const newDogsJulia = [...dogsJulia];
+  newDogsJulia.splice(0, 1) ;
+  newDogsJulia.splice(-2) ;
+  const currentDogs = [...newDogsJulia, ...dogsKate] ;
+  currentDogs.forEach(function (dogAge, index) {
+    const ageGroup = dogAge >= 3 ? 'a adult' : 'an puppy' ; 
+    const checks = `Dog number ${index+1} is  ${ageGroup}, and is ${dogAge} years old` ;
+    console.log(checks) ;
+
+  });
+
+};
+checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
