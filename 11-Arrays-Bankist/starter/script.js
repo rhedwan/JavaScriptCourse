@@ -78,6 +78,21 @@ const displayMovements = function(movements){
 
 displayMovements(account1.movements);
 
+
+const createsUsernames = function (accs) {
+  accs.forEach(function(acc){
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+
+};
+
+createsUsernames(accounts) ;
+console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -189,7 +204,7 @@ checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]); */
 
 // Data Transformation: map, filter, reduce
-
+/* 
 const eurToUsd = 1.1 ;
 
 // const movementsUSD = movements.map(function (mov) {
@@ -217,4 +232,4 @@ const movementsDescription = movements.map((mov, i, arr) => {
     return `Movement ${i+1} You withdraw ${Math.abs(mov)}`;
   }
 });
-console.log(movementsDescription);
+console.log(movementsDescription); */
