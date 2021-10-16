@@ -234,7 +234,7 @@ const movementsDescription = movements.map((mov, i, arr) => {
 });
 console.log(movementsDescription); */
 
-// filter
+/* // filter
 const deposits = movements.filter(function(mov){
   return mov > 0 ;
 });
@@ -247,4 +247,24 @@ for(const mov of movements) if (mov > 0) depositsFor.push(mov) ;
 console.log(depositsFor);
 
 const withdrawals = movements.filter(mov => mov < 0);
-console.log(withdrawals);
+console.log(withdrawals); */
+/* 
+// reduce
+console.log(movements);
+
+// accumulator => SNOWBALL
+
+// const balance = movements.reduce(function(acc, cur, i, arr){
+//   console.log(`Iteration ${i} ${acc} ${cur}`);
+//   return acc + cur
+// }); 
+
+const balance = movements.reduce((acc, cur) => acc + cur ); 
+
+console.log(balance);
+
+let balance1 = 0 ;
+for(const cur of movements) balance1 += cur ;
+
+console.log(balance1)
+ */
