@@ -78,6 +78,12 @@ const displayMovements = function(movements){
 
 displayMovements(account1.movements);
 
+const calcDisplayBalance = function (movements) {
+  const balance =  movements.reduce((acc, mov) => acc + mov) ;
+  labelBalance.textContent = `${balance} EUR` ;
+
+};
+calcDisplayBalance(account1.movements);
 
 const createsUsernames = function (accs) {
   accs.forEach(function(acc){
@@ -268,3 +274,11 @@ for(const cur of movements) balance1 += cur ;
 
 console.log(balance1)
  */
+
+// Maximum value
+const max  = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc ;
+  else return  mov ;
+}, movements[0]);
+
+console.log(max);
