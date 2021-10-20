@@ -276,9 +276,38 @@ console.log(balance1)
  */
 
 // Maximum value
-const max  = movements.reduce((acc, mov) => {
+/* const max  = movements.reduce((acc, mov) => {
   if (acc > mov) return acc ;
   else return  mov ;
 }, movements[0]);
 
-console.log(max);
+console.log(max); */
+
+const calcAverageHumanAge = function(ages){
+
+  // 1.
+  const humanAges = ages.map((dogAge) =>{
+    if (dogAge <= 2){
+      return 2 * dogAge
+    }
+    else if (dogAge > 2){
+      return 16 + dogAge * 4
+    }
+  });
+
+  // 2.
+  const adultDogs = humanAges.filter(adultDog => adultDog >= 18) ;
+
+  // 3.
+  // const sumAdultDog = adultDogs.reduce((prev, next) =>{
+  //   return prev + next ;
+  // }) / adultDogs.length ;
+
+  // Aliter
+  const sumAdultDog = adultDogs.reduce((prev, next, i, arr) => prev + next / arr.length , 0) ;
+
+  return `The sum of the Adult Dog ${adultDogs} is ${sumAdultDog}`;
+};
+
+console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
