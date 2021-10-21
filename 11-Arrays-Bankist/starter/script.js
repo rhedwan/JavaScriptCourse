@@ -282,7 +282,7 @@ console.log(balance1)
 }, movements[0]);
 
 console.log(max); */
-
+/* 
 const calcAverageHumanAge = function(ages){
 
   // 1.
@@ -311,3 +311,20 @@ const calcAverageHumanAge = function(ages){
 
 console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
 console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
+ */
+
+
+// Magic of Chaining Methods
+/* const eurToUsd = 1.1 ;
+
+// PIPELINE
+const totalDepositsUSD = movements
+.filter(mov => mov > 0)
+// .map((mov, i, arr) => {
+//   console.log(arr);
+//   return mov *eurToUsd 
+// })
+.map(mov => mov *eurToUsd )
+.reduce((acc, mov ) => acc + mov, 0);
+
+console.log(totalDepositsUSD) ; */
