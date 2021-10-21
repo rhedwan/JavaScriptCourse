@@ -347,3 +347,17 @@ const totalDepositsUSD = movements
 .reduce((acc, mov ) => acc + mov, 0);
 
 console.log(totalDepositsUSD) ; */
+
+
+const calcAverageHumanAge = ages => {
+
+  const averageAdultAge = ages
+  .map((dogAge) => dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4)
+  .filter(adultDog => adultDog >= 18)
+  .reduce((prev, next, i, arr) => prev + next / arr.length , 0);
+
+  return `The average of the Adult Dog are ${averageAdultAge}`;
+};
+
+console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
