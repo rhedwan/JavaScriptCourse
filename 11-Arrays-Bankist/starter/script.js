@@ -464,7 +464,7 @@ const account = accounts.find(acc => acc.owner === 'Jessica Davis') ;
 
 console.log(account); */
 
-console.log(movements);
+/* console.log(movements);
 
 // EQUALITY
 console.log(movements.includes(-130));
@@ -484,3 +484,28 @@ const deposit = mov => mov > 0 ;
 console.log(movements.some(deposit));
 console.log(movements.every(deposit));
 console.log(movements.filter(deposit));
+ */
+
+// FLAT Method
+const arr = [[1,2,3], [4,5, 6], 7, 8] ;
+console.log(arr.flat());
+
+// flap :  levels
+const arrDeep = [ [ [1, 2], 3], [4, [5, 6]], 7, 8] ;
+console.log(arrDeep.flat());
+console.log(arrDeep.flat(2));
+
+// flat
+const overalBalance = accounts
+.map(acc => acc.movements)
+.flat()
+.reduce((acc, cur) => acc + cur, 0)
+
+console.log(overalBalance)
+
+// flatMap
+const overalBalance2 = accounts
+.flatMap(acc => acc.movements)
+.reduce((acc, cur) => acc + cur, 0)
+
+console.log(overalBalance2)
