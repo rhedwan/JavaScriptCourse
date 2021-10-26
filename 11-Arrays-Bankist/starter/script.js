@@ -654,7 +654,7 @@ console.log(convertTitleCase('this is a LONG title but not too long'));
 console.log(convertTitleCase('and here is aanother title with an EXAMPLE')); */
 
 // Coding Challenge #4
-const dogs = [
+/* const dogs = [
   { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
   { weight: 8, curFood: 200, owners: ['Matilda'] },
   { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
@@ -757,4 +757,4 @@ const recFoodOrder = dogs
 .map(recData => recData.recFood )
 .sort((a, b) => a-b)
 
-console.log(recFoodOrder);
+console.log(recFoodOrder); */
