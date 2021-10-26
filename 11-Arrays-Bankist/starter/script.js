@@ -580,7 +580,7 @@ labelBalance.addEventListener('click', function(e){
   );
   console.log(movementsUI);
 }); */
-
+/* 
 // 1.
 const bankDepositSum  = accounts
 .flatMap(acc => acc.movements )
@@ -651,4 +651,110 @@ const convertTitleCase = function(title){
   
 console.log(convertTitleCase('this is a nice title'));
 console.log(convertTitleCase('this is a LONG title but not too long'));
-console.log(convertTitleCase('and here is aanother title with an EXAMPLE'));
+console.log(convertTitleCase('and here is aanother title with an EXAMPLE')); */
+
+// Coding Challenge #4
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+
+];
+
+// 1.
+dogs.map(dogData => dogData.recFood = Math.trunc(dogData.weight ** 0.75 * 28)) ;
+console.log(dogs);
+
+// 2.
+
+const feedChecks = (current, recommended) =>{
+  let feedingStatus;
+  if(current > recommended ){
+    feedingStatus = 'much'
+  }
+  else{
+    feedingStatus = 'litte'
+  }
+
+  return feedingStatus
+};
+
+const sarahDog = dogs
+.find(target => target.owners.includes('Sarah')) 
+
+console.log(`Sarah's dog is eating too ${feedChecks(sarahDog.curFood,sarahDog.recFood)}`);
+
+// 3.
+const ownersEatTooMuch = dogs
+.filter(dogData => feedChecks(dogData.recFood, dogData.curFood) === 'much')
+.reduce((ownerArr, curr) => {
+  ownerArr.push(curr.owners)
+  return ownerArr
+}, [])
+.flat();
+
+console.log(ownersEatTooMuch);
+
+
+const ownersEatTooLittle = dogs
+.filter(dogData => feedChecks(dogData.recFood, dogData.curFood) === 'litte')
+.reduce((ownerArr, curr) => {
+  ownerArr.push(curr.owners)
+  return ownerArr
+}, [])
+.flat();
+
+console.log(ownersEatTooLittle);
+
+// 4.
+
+const strEatTooMuch = ownersEatTooMuch
+.reduce((str, cur, i, arr) => {
+  i < arr.length -1 ? str += `${cur} and ` : str += `${cur} dogs eat too much!` ;
+  return str 
+}, '');
+
+console.log(strEatTooMuch)
+
+const strEatTooLittle = ownersEatTooLittle
+.reduce((str, cur, i, arr) => {
+  i < arr.length -1 ? str += `${cur} and ` : str += `${cur} dogs eat too little!` ;
+  return str 
+}, '');
+
+console.log(strEatTooLittle);
+
+
+// 5. 
+const exactlyAmount = dogs
+.some(dog => dog.curFood === dog.recFood);
+
+console.log(exactlyAmount);
+
+
+// 6.
+
+const okayFood = (current , recommended) => {
+  return current > (recommended * 0.90) && current < (recommended *1.10)
+};
+
+const okayChecker = dogs
+.some(dog => okayFood(dog.curFood, dog.recFood));
+
+console.log(okayChecker);
+
+// 7.
+const okayArr = dogs
+.filter(dog => okayFood(dog.curFood, dog.recFood));
+
+console.log(okayArr);
+
+// 8.
+
+const recFoodOrder = dogs
+.slice()
+.map(recData => recData.recFood )
+.sort((a, b) => a-b)
+
+console.log(recFoodOrder);
