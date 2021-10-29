@@ -335,7 +335,7 @@ console.log((2.7).toFixed(0));
 console.log((2.7).toFixed(3));
 console.log(+(2.349).toFixed(2)); */
 
-console.log(5 % 2);
+/* console.log(5 % 2);
 console.log(5 / 2);
 
 console.log(8 % 3);
@@ -360,3 +360,42 @@ labelBalance.addEventListener('click', function(){
   });
 
 });
+ */
+
+console.log(2 ** 53 -1);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2 ** 53 + 1);
+console.log(2 ** 53 + 2);
+console.log(2 ** 53 + 3);
+console.log(2 ** 53 + 4);
+console.log(2 ** 53 + 5);
+
+console.log(433367373567311656367890530384204922225277242);
+
+// Big int
+console.log(433367373567311656367890530384204922225277242n);
+console.log(BigInt(433367373567311656367890530384204922225277242));
+
+
+// Operations
+console.log(10000n + 10000n);
+console.log(34444446353636252642625151n * 88573522262515622262562n);
+
+// console.log(Math.sqrt(16n)) ;
+
+const huge = 200202525262626263737n ;
+const num = 23  ;
+console.log(huge * BigInt(23));
+
+// Exceptions
+console.log(20n > 15) ;
+console.log(20n === 20) ;
+console.log(typeof 20n) ;
+console.log(20n == 20) ;
+
+// String Concatenation
+console.log(huge + ' is REALLY big !!!')
+
+// Divisions
+console.log(10n / 3n) ;
+console.log(10 / 3) ;
