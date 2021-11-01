@@ -36,13 +36,12 @@ document.addEventListener('keydown', function (e) {
 //////////////////////////////////////////
 //////////////////////////////////////////
 //////////////////////////////////////////
-
+/* 
 // Selecting elements
 console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
 
-const header = document.querySelector('.header') ;
 const allSections = document.querySelectorAll('.section');
 
 console.log(allSections) ;
@@ -54,7 +53,9 @@ const allButtons = document.getElementsByTagName('button') ;
 console.log(allButtons);
 
 console.log(document.getElementsByClassName('btn'));
+*/
 
+const header = document.querySelector('.header') ;
 
 // Creating and inserting elements
 //.insertAdjacentHTML
@@ -84,3 +85,63 @@ document.querySelector('.btn--close-cookie').addEventListener('click', function(
   // The previous way of doing it
   // message.parentElement.removeChild(message) ;
 })
+/* 
+// Styles
+message.style.backgroundColor = '#37383d' ;
+message.style.width = '120%' ;
+
+// Getting an existing styles
+// It only works for the iniline styles
+console.log(message.style.color);
+console.log(message.style.backgroundColor);
+
+// All the styles
+console.log(getComputedStyle(message)) ;
+console.log(getComputedStyle(message).color) ;
+console.log(getComputedStyle(message).height) ;
+
+message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 40 + 'px' ;
+
+document.documentElement.style.setProperty('--color-primary', 'orangered') ;
+
+// Attributes
+const logo = document.querySelector('.nav__logo') ;
+console.log(logo.alt);
+console.log(logo.src);
+console.log(logo.className);
+
+logo.alt = 'Beautiful minimalist logo' ;
+
+// Not a standard attribute
+console.log(logo.designer);
+console.log(logo.getAttribute('designer'));
+
+logo.setAttribute('comapany', 'Bankist') ;
+
+// Relative and Absolute Path
+console.log(logo.src);
+console.log(logo.getAttribute('src'));
+
+// const link = document.querySelector('.twitter-link') ;
+const link = document.querySelector('.nav__link--btn') ;
+
+// Absolute
+console.log(link.href);
+
+
+// Relative
+console.log(link.getAttribute('href'));
+
+
+// Data attributes
+console.log(logo.dataset.versionNumber);
+
+// Classes
+logo.classList.add('c') ;
+logo.classList.remove('c') ;
+logo.classList.toggle('c') ;
+logo.classList.contains('c') ; // not includes
+
+// Don't use this. ut overwrite the existing values
+logo.className = 'ridwan';
+ */
