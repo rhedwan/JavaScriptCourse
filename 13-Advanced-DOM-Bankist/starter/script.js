@@ -1,12 +1,18 @@
 'use strict';
 
-///////////////////////////////////////
-// Modal window
+
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector('.btn--scroll-to') ;
+const section1 = document.querySelector('#section--1');
+const header = document.querySelector('.header') ;
+const message = document.createElement('div') ;
+
+///////////////////////////////////////
+// Modal window
 
 const openModal = function (e) {
   e.preventDefault() ;
@@ -33,35 +39,43 @@ document.addEventListener('keydown', function (e) {
 });
 
 
-//////////////////////////////////////////
-//////////////////////////////////////////
-//////////////////////////////////////////
-/* 
-// Selecting elements
-console.log(document.documentElement);
-console.log(document.head);
-console.log(document.body);
+///////////////////////////////////////
+// Implementing smooth scroll
 
-const allSections = document.querySelectorAll('.section');
+btnScrollTo.addEventListener('click',function(e){
+  // const s1coords = section1.getBoundingClientRect() ;
+  // console.log(s1coords) ;
 
-console.log(allSections) ;
+  // console.log(e.target.getBoundingClientRect()) ;
 
-// HTMLCollection
-document.getElementById('section--1')
+  // console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset) ;
 
-const allButtons = document.getElementsByTagName('button') ;
-console.log(allButtons);
+  // console.log('height/width viewport', document.documentElement.clientHeight,document.documentElement.clientWidth ) ;
 
-console.log(document.getElementsByClassName('btn'));
-*/
+  // Scrolling
+  // console.log(s1coords.left + window.pageXOffset, s1coords.top + window.pageYOffset);
+  // window.scrollTo(s1coords.left + window.pageXOffset, s1coords.top + window.pageYOffset) ;
 
-const header = document.querySelector('.header') ;
+  // window.scrollTo({
+  //   left :s1coords.left + window.pageXOffset, 
+  //   top :s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth'
+  // });
 
+  // Modern
+  section1.scrollIntoView({behavior: 'smooth'}) ;
+});
+
+///////////////////////////////////////
+// Page Navigation
+
+
+
+///////////////////////////////////////
 // Creating and inserting elements
 //.insertAdjacentHTML
 
-const message = document.createElement('div') ;
-message.classList.add('cookie-message');
+/* message.classList.add('cookie-message');
 // message.textContent = 'We use cookies for improved functionality and analytics.' ;
 message.innerHTML =  `We use cookies for improved functionality and
  analytics.<button class="btn  btn--close-cookie"> Got it </button>` ;
@@ -84,7 +98,53 @@ document.querySelector('.btn--close-cookie').addEventListener('click', function(
 
   // The previous way of doing it
   // message.parentElement.removeChild(message) ;
-})
+}) */
+
+
+
+///////////////////////////////////////
+// Other Event listener
+
+/* const h1 = document.querySelector('h1') ;
+
+const alertH1 = function (e) {
+  alert('addEventListener: Great ! You are reading the heading:D') ;
+}
+h1.addEventListener('mouseenter', alertH1 )
+setTimeout(() => {
+  h1.removeEventListener('mouseenter', alertH1)
+  
+}, 3000);
+ */
+//////////////////////////////////////////
+//////////////////////////////////////////
+//////////////////////////////////////////
+/* 
+// Selecting elements
+console.log(document.documentElement);
+console.log(document.head);
+console.log(document.body);
+
+const allSections = document.querySelectorAll('.section');
+
+console.log(allSections) ;
+
+// HTMLCollection
+document.getElementById('section--1')
+
+const allButtons = document.getElementsByTagName('button') ;
+console.log(allButtons);
+
+console.log(document.getElementsByClassName('btn'));
+*/
+
+
+// h1.onmouseenter = function (e) {
+//   alert('addEventListener: Great ! You are reading the heading:D')
+// };
+
+
+
 /* 
 // Styles
 message.style.backgroundColor = '#37383d' ;
@@ -146,53 +206,9 @@ logo.classList.contains('c') ; // not includes
 logo.className = 'ridwan';
  */
 
-// Implementing smooth scroll
-
-const btnScrollTo = document.querySelector('.btn--scroll-to') ;
-const section1 = document.querySelector('#section--1');
-
-btnScrollTo.addEventListener('click',function(e){
-  // const s1coords = section1.getBoundingClientRect() ;
-  // console.log(s1coords) ;
-
-  // console.log(e.target.getBoundingClientRect()) ;
-
-  // console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset) ;
-
-  // console.log('height/width viewport', document.documentElement.clientHeight,document.documentElement.clientWidth ) ;
-
-  // Scrolling
-  // console.log(s1coords.left + window.pageXOffset, s1coords.top + window.pageYOffset);
-  // window.scrollTo(s1coords.left + window.pageXOffset, s1coords.top + window.pageYOffset) ;
-
-  // window.scrollTo({
-  //   left :s1coords.left + window.pageXOffset, 
-  //   top :s1coords.top + window.pageYOffset,
-  //   behavior: 'smooth'
-  // });
-
-  // Modern
-  section1.scrollIntoView({behavior: 'smooth'}) ;
-});
-
-const h1 = document.querySelector('h1') ;
-
-const alertH1 = function (e) {
-  alert('addEventListener: Great ! You are reading the heading:D') ;
-}
-
-h1.addEventListener('mouseenter', alertH1 )
-
-setTimeout(() => {
-  h1.removeEventListener('mouseenter', alertH1)
-  
-}, 3000);
-
-// h1.onmouseenter = function (e) {
-//   alert('addEventListener: Great ! You are reading the heading:D')
-// };
-
-
+///////////////////////////////////////
+// Bubbling 
+/* 
 // rgb(255, 255, 2555)
 const randomInt = (min, max) => Math.floor(Math.random() * (max - min +1)+ min) ;
 const randomColor = () => `rgb(${randomInt(0, 256)},${randomInt(0, 256)}, ${randomInt(0, 256)})` ;
@@ -212,7 +228,7 @@ document.querySelector('.nav__links').addEventListener('click', function(e){
   this.style.backgroundColor = randomColor() ;
   console.log('CONTAINER', e.target, e.currentTarget);
 
-})
+}) */
 
 document.querySelector('.nav').addEventListener('click', function(e){
   e.preventDefault();
