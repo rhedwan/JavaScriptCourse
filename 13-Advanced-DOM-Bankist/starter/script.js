@@ -11,6 +11,7 @@ const section1 = document.querySelector('#section--1');
 const header = document.querySelector('.header') ;
 const message = document.createElement('div') ;
 
+const nav  = document.querySelector('.nav') ;
 ///////////////////////////////////////
 // Modal window
 
@@ -119,6 +120,36 @@ tabsContainer.addEventListener('click', function(e){
   // Activate content area
   document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active')
 });
+
+// Menu fade animation
+const handleHover = function(e){
+  
+  if(e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link') ;
+    const logo = link.closest('.nav').querySelector('img') ;
+
+    siblings.forEach(el => {
+      if(el !== link) el.style.opacity = this ;
+    
+    }) ;
+    logo.style.opacity = this ;
+  }
+} ;
+
+// Passing "argument" into handler
+
+nav.addEventListener('mouseover', handleHover.bind(0.5)) ;
+nav.addEventListener('mouseout', handleHover.bind(1)) ;
+
+/* nav.addEventListener('mouseover', function(e){
+  handleHover(e, 0.5) ;
+}) ;
+
+nav.addEventListener('mouseout', function(e){
+  handleHover(e, 1) ;
+}) ; */
+
 ///////////////////////////////////////
 // Creating and inserting elements
 //.insertAdjacentHTML
