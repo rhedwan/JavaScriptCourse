@@ -185,6 +185,8 @@ window.addEventListener('scroll', function(){
 // const observer = new IntersectionObserver(obsCallback, obsOption);
 // observer.observe(section1) ;
 
+const navHeight = nav.getBoundingClientRect().height ;     
+
 const stickyNav = function(entries){
   const [entry] = entries ; 
   console.log(entry) ;
@@ -193,8 +195,7 @@ const stickyNav = function(entries){
 
 }
 
-// const headerSticky = document.querySelector('.header') ;      
-const headerObserver = new IntersectionObserver(stickyNav, {root: null, threshold:0}) ;   
+const headerObserver = new IntersectionObserver(stickyNav, {root: null, threshold:0, rootMargin: `-${navHeight}px` }) ;   
    
 headerObserver.observe(header) ;  
 
