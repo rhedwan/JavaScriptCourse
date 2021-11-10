@@ -253,14 +253,17 @@ const slider  = document.querySelector('.slider') ;
 slider.style.transform = 'scale(0.5)' ;
 slider.style.overflow = 'visible' ;
 
-slides.forEach((slide, index) => (slide.style.transform = `translateX(${100 * index}%)`)) ; 
+const goToSlide = function(slide){
+  slides.forEach((s, index) => (s.style.transform = `translateX(${100 * (index - slide)}%)`)) ; 
+};
+
+goToSlide(0) ;
 
 // Next Slide
 btnRight.addEventListener('click', function(){  
   if(currentSlide === maxSlide - 1) currentSlide = 0 ;
   else currentSlide ++ ;   
-  slides.forEach((slide, index) => (slide.style.transform = `translateX(${100 * (index - currentSlide)}%)`)) ; 
-
+  goToSlide(currentSlide) ;
 });
 ///////////////////////////////////////
 // Creating and inserting elements
