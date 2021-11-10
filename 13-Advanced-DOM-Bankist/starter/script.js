@@ -258,6 +258,14 @@ const createDots = function(){
 };
 
 createDots() ;
+
+const activateDot = function(slide){
+  const dots = document.querySelectorAll('.dots__dot') ;
+  dots.forEach(dot => dot.classList.remove('dots__dot--active')) ;
+  dots[slide].classList.add('dots__dot--active') ;  
+};
+activateDot(0) ;
+
 // const slider  = document.querySelector('.slider') ;
 // slider.style.transform = 'scale(0.5)' ;
 // slider.style.overflow = 'visible' ;
@@ -272,12 +280,14 @@ const nextSlide = function () {
   if(currentSlide === maxSlide - 1) currentSlide = 0 ;
   else currentSlide ++ ;   
   goToSlide(currentSlide) ;
+  activateDot(currentSlide) ; 
 };
 
 const prevSlide = function () {
   if(currentSlide === 0) currentSlide = maxSlide - 1 ;
   else currentSlide -- ;   
   goToSlide(currentSlide) ;
+  activateDot(currentSlide) ; 
 };
 
 // Next Slide
@@ -304,7 +314,8 @@ dotContainer.addEventListener('click', function(e){
   if(e.target.classList.contains('dots__dot')){
     const {slide} = e.target.dataset  ;    
     goToSlide(slide) ;
-  }
+    activateDot(slide) ; 
+  };
 });
 
 ///////////////////////////////////////
