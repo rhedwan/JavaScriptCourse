@@ -215,7 +215,7 @@ const sectionObserver = new IntersectionObserver(revealSections, {
 
 allSections.forEach(s =>{ 
   sectionObserver.observe(s) ;
-  // s.classList.add('section--hidden') ;
+  s.classList.add('section--hidden') ;
 }) ;
 
 // Lazy Loading Images
@@ -521,3 +521,22 @@ console.log(h1.parentElement.children);
 [...h1.parentElement.children].forEach(function (el) {
   if(el !==h1) el.style.transform = 'scale(0.5)'
 }) */
+
+
+// Lifecycle DOM Events
+document.addEventListener('DOMContentLoaded', function(e){
+  console.log('DOMContentLoaded', e);
+}) ;
+
+// Load of CSS, images and external resources
+window.addEventListener('load', function(e){ 
+  console.log('load', e);
+});
+
+
+// window.addEventListener('beforeunload', function(e){
+//   e.preventDefault();
+//   console.log('beforeunload', e);
+//   e.returnValue = '';
+// });
+
