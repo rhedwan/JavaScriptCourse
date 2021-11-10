@@ -276,6 +276,15 @@ btnRight.addEventListener('click', nextSlide);
 //Previous Slide
 btnLeft.addEventListener('click', prevSlide);
 
+document.addEventListener('keydown', function(e){
+  // if(e.key === 'ArrowRight') nextSlide() ;  
+  // if(e.key === 'ArrowLeft') prevSlide() ;  
+
+  // Short Circuiting
+  e.key === 'ArrowRight' && nextSlide() ;  
+  e.key === 'ArrowLeft' && prevSlide() ;  
+});
+
 ///////////////////////////////////////
 // Creating and inserting elements
 //.insertAdjacentHTML
