@@ -294,6 +294,19 @@ document.addEventListener('keydown', function(e){
   e.key === 'ArrowLeft' && prevSlide() ;  
 });
 
+dotContainer.addEventListener('click', function(e){
+  // Another way to get the target element of the event 
+  // if(e.target.tagName !== 'BUTTON') return ;
+  // currentSlide = e.target.dataset.slide ;
+  // goToSlide(currentSlide) ;
+
+  
+  if(e.target.classList.contains('dots__dot')){
+    const {slide} = e.target.dataset  ;    
+    goToSlide(slide) ;
+  }
+});
+
 ///////////////////////////////////////
 // Creating and inserting elements
 //.insertAdjacentHTML
