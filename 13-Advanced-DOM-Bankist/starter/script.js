@@ -214,8 +214,8 @@ const sectionObserver = new IntersectionObserver(revealSections, {
 }) ;
 
 allSections.forEach(s =>{ 
-  sectionObserver.observe(s)
-  s.classList.add('section--hidden') ;
+  sectionObserver.observe(s) ;
+  // s.classList.add('section--hidden') ;
 }) ;
 
 // Lazy Loading Images
@@ -241,6 +241,14 @@ const imgObserver = new IntersectionObserver(loadImg, {
 });
 
 imgTargets.forEach(img => imgObserver.observe(img)) ;
+
+// Slider
+const slides = document.querySelectorAll('.slide') ;
+const slider  = document.querySelector('.slider') ;
+slider.style.transform = 'scale(0.5)' ;
+slider.style.overflow = 'visible' ;
+
+slides.forEach((slide, index) => (slide.style.transform = `translateX(${100 * index}%)`)) ; 
 
 ///////////////////////////////////////
 // Creating and inserting elements
