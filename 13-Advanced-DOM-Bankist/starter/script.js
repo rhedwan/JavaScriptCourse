@@ -244,12 +244,23 @@ imgTargets.forEach(img => imgObserver.observe(img)) ;
 
 // Slider
 const slides = document.querySelectorAll('.slide') ;
+const btnLeft = document.querySelector('.slider__btn--left') ;    
+const btnRight = document.querySelector('.slider__btn--right') ;    
+let currentSlide = 0 ;
+const maxSlide = slides.length ;
+
 const slider  = document.querySelector('.slider') ;
 slider.style.transform = 'scale(0.5)' ;
 slider.style.overflow = 'visible' ;
 
 slides.forEach((slide, index) => (slide.style.transform = `translateX(${100 * index}%)`)) ; 
 
+// Next Slide
+btnRight.addEventListener('click', function(){  
+  currentSlide ++ ;
+  slides.forEach((slide, index) => (slide.style.transform = `translateX(${100 * (index - currentSlide)}%)`)) ; 
+
+});
 ///////////////////////////////////////
 // Creating and inserting elements
 //.insertAdjacentHTML
