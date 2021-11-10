@@ -265,8 +265,16 @@ const nextSlide = function () {
   goToSlide(currentSlide) ;
 };
 
+const prevSlide = function () {
+  if(currentSlide === 0) currentSlide = maxSlide - 1 ;
+  else currentSlide -- ;   
+  goToSlide(currentSlide) ;
+};
+
 // Next Slide
 btnRight.addEventListener('click', nextSlide);
+//Previous Slide
+btnLeft.addEventListener('click', prevSlide);
 
 ///////////////////////////////////////
 // Creating and inserting elements
