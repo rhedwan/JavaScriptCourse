@@ -257,24 +257,18 @@ const createDots = function(){
   }) ;
 };
 
-createDots() ;
 
 const activateDot = function(slide){
   const dots = document.querySelectorAll('.dots__dot') ;
   dots.forEach(dot => dot.classList.remove('dots__dot--active')) ;
   dots[slide].classList.add('dots__dot--active') ;  
 };
-activateDot(0) ;
 
-// const slider  = document.querySelector('.slider') ;
-// slider.style.transform = 'scale(0.5)' ;
-// slider.style.overflow = 'visible' ;
 
 const goToSlide = function(slide){
   slides.forEach((s, index) => (s.style.transform = `translateX(${100 * (index - slide)}%)`)) ; 
 };
 
-goToSlide(0) ;
 
 const nextSlide = function () {
   if(currentSlide === maxSlide - 1) currentSlide = 0 ;
@@ -289,6 +283,14 @@ const prevSlide = function () {
   goToSlide(currentSlide) ;
   activateDot(currentSlide) ; 
 };
+
+const init = function(){
+  createDots() ;
+  activateDot(0) ;
+  goToSlide(0) ;
+};
+
+init() ;
 
 // Next Slide
 btnRight.addEventListener('click', nextSlide);
