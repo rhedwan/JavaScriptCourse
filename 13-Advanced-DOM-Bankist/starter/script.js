@@ -257,7 +257,8 @@ slides.forEach((slide, index) => (slide.style.transform = `translateX(${100 * in
 
 // Next Slide
 btnRight.addEventListener('click', function(){  
-  currentSlide ++ ;
+  if(currentSlide === maxSlide - 1) currentSlide = 0 ;
+  else currentSlide ++ ;   
   slides.forEach((slide, index) => (slide.style.transform = `translateX(${100 * (index - currentSlide)}%)`)) ; 
 
 });
