@@ -25,3 +25,22 @@ const jack = new Person('Jack', 1972);
 console.log(matilda, jack);
 
 console.log(john instanceof Person);
+
+console.log(Person.prototype);
+
+// Prototypes
+Person.prototype.calcAge = function() {
+    console.log(2037 - this.birthYear);
+}
+
+john.calcAge();
+matilda.calcAge();
+jack.calcAge();
+
+console.log(john.__proto__);
+console.log(john.__proto__ === Person.prototype);
+console.log(Person.prototype.isPrototypeOf(john));
+console.log(Person.prototype.isPrototypeOf(Person));
+
+// .prototype is a property of the function
+// .prototypeOfLinkedObjects
