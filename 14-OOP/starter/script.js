@@ -2,9 +2,14 @@
 
 // Constructor function
 const Person = function(firstName, birthYear) {
+    // Instance properties
     this.firstName = firstName;
     this.birthYear = birthYear;
-    // console.log(this);
+    
+    // Instance methods => Never do this!
+    // this.calAge = function() {
+    //     console.log(2037 - this.birthYear);
+    // }   
 };  
 
 const john = new Person('John', 1990);       // new keyword is used to create an object
