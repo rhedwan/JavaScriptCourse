@@ -44,3 +44,12 @@ console.log(Person.prototype.isPrototypeOf(Person));
 
 // .prototype is a property of the function
 // .prototypeOfLinkedObjects
+
+// Inherited properties
+Person.prototype.species = 'Homo Sapiens' ;
+
+console.log(john, matilda);
+console.log(john.species, matilda.species);
+
+console.log(john.hasOwnProperty('firstName')) ;
+console.log(john.hasOwnProperty('species')) ;
