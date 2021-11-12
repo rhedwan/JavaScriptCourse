@@ -53,3 +53,20 @@ console.log(john.species, matilda.species);
 
 console.log(john.hasOwnProperty('firstName')) ;
 console.log(john.hasOwnProperty('species')) ;
+
+// Prototypal Inheritance on Built-In objects
+
+console.log(john.__proto__.__proto__);
+
+// Object.prototype (top of the prototype chain)    => Object.prototype.__proto__   
+console.log(john.__proto__.__proto__.__proto__);
+
+console.dir(Person.prototype.constructor);  
+
+const arr  = [1, 2, 3, 4, 5];   
+
+console.log(arr.__proto__); 
+// Prototype of an array is same as prototype of an object
+console.log(arr.__proto__ === Array.prototype); 
+console.log(arr.__proto__.__proto__); 
+
