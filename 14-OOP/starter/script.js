@@ -84,7 +84,7 @@ console.dir(x =>  x + 1) ; */
 
 
 // Coding Challenge #1
-
+/* 
 const Car = function(make, speed){
     this.make = make;
     this.speed = speed;
@@ -114,4 +114,29 @@ car2.accelerate();
 car2.brake();
 car2.accelerate();
 car2.brake();
-car2.accelerate();
+car2.accelerate(); */
+
+// Class exprssion
+// const PersonCl = class {
+
+// };
+
+// class declaration
+class PersonCl {
+    constructor(firstName, birthYear) {
+        this.firstName = firstName;
+        this.birthYear = birthYear;
+    }
+
+    // Instance methods
+    // Methods will be added to .prototype property of the class
+    calcAge() {
+        console.log(2037 - this.birthYear);
+    }
+}
+
+const rhedwan = new PersonCl('Rhedwan', 1990);  
+console.log(rhedwan) ;
+
+rhedwan.calcAge();
+console.log(rhedwan.__proto__ === PersonCl.prototype);
