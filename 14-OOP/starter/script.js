@@ -1,4 +1,4 @@
-'use strict';
+/* 'use strict';
 
 // Constructor function
 const Person = function(firstName, birthYear) {
@@ -80,4 +80,38 @@ const h1  = document.querySelector('h1');
 console.dir(h1) ;
 console.log(h1.__proto__);
 
-console.dir(x =>  x + 1) ;
+console.dir(x =>  x + 1) ; */
+
+
+// Coding Challenge #1
+
+const Car = function(make, speed){
+    this.make = make;
+    this.speed = speed;
+} ;
+
+// 1
+Car.prototype.accelerate = function(){
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed}km/h`);
+};
+
+// 2.
+Car.prototype.brake = function(){
+    this.speed -=  5;
+    console.log(`${this.make} is decreasing to ${this.speed}km/h`);
+};
+
+const car1 = new Car('BMW', 120);
+const car2 = new Car('Mercedes', 95);
+
+car1.accelerate();
+car1.accelerate();
+car1.brake();
+car1.accelerate();
+
+car2.accelerate();
+car2.brake();
+car2.accelerate();
+car2.brake();
+car2.accelerate();
