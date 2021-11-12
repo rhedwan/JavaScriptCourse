@@ -63,10 +63,15 @@ console.log(john.__proto__.__proto__.__proto__);
 
 console.dir(Person.prototype.constructor);  
 
-const arr  = [1, 2, 3, 4, 5];   
+const arr  = [1, 2, 1, 5, 8, 1 , 8, 3, 4, 5];   
 
 console.log(arr.__proto__); 
 // Prototype of an array is same as prototype of an object
 console.log(arr.__proto__ === Array.prototype); 
 console.log(arr.__proto__.__proto__); 
 
+Array.prototype.unique = function(){
+    return [...new Set(this)];
+};
+
+console.log(arr.unique());
