@@ -151,3 +151,8 @@ console.log(rhedwan.__proto__ === PersonCl.prototype);
 // };
 
 rhedwan.greet();
+
+// 1. Classes are not hoisted
+// 2. Classes are first-class citizens
+// 3. Classes are executed in strict mode
+// 4. Classes are not instances of other classes
