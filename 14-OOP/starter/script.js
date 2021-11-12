@@ -122,7 +122,7 @@ car2.accelerate(); */
 // };
 
 // class declaration
-class PersonCl {
+/* class PersonCl {
     constructor(firstName, birthYear) {
         this.firstName = firstName;
         this.birthYear = birthYear;
@@ -151,8 +151,27 @@ console.log(rhedwan.__proto__ === PersonCl.prototype);
 // };
 
 rhedwan.greet();
-
+ */
 // 1. Classes are not hoisted
 // 2. Classes are first-class citizens
 // 3. Classes are executed in strict mode
 // 4. Classes are not instances of other classes
+
+
+
+const account = {
+    owner : 'Rhedwan',
+    movements : [200, -100, -300, 100],
+
+    get latest() {
+        return this.movements[this.movements.length - 1];
+    },
+    set latest(mov) {
+        return this.movements.push(mov);
+    }
+}
+
+console.log(account.latest);
+account.latest = 300;
+console.log(account.latest);
+console.log(account.movements); 
