@@ -133,6 +133,11 @@ class PersonCl {
     calcAge() {
         console.log(2037 - this.birthYear);
     }
+
+    greet () {
+        console.log(`Hello, I am ${this.firstName}`);
+    };
+    
 }
 
 const rhedwan = new PersonCl('Rhedwan', 1990);  
@@ -140,3 +145,9 @@ console.log(rhedwan) ;
 
 rhedwan.calcAge();
 console.log(rhedwan.__proto__ === PersonCl.prototype);
+
+// PersonCl.prototype.greet = function () {
+//     console.log(`Hello, I am ${this.firstName}`);
+// };
+
+rhedwan.greet();
