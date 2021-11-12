@@ -122,9 +122,9 @@ car2.accelerate(); */
 // };
 
 // class declaration
-/* class PersonCl {
-    constructor(firstName, birthYear) {
-        this.firstName = firstName;
+class PersonCl {
+    constructor(fullName, birthYear) {
+        this.fullName = fullName;
         this.birthYear = birthYear;
     }
 
@@ -138,12 +138,31 @@ car2.accelerate(); */
         console.log(`Hello, I am ${this.firstName}`);
     };
     
+    get age() {
+        return 2037 - this.birthYear;
+    };
+
+    // Set a property that already exists
+    set fullName(name) {
+        if(name.includes(' ')) this._fullName = name;
+        
+        else alert(`${name} is not full name. Please enter your full name`);
+    }
+
+    get fullName() {
+        return this._fullName;
+    }
+
 }
 
-const rhedwan = new PersonCl('Rhedwan', 1990);  
+const rhedwan = new PersonCl('Rhedwan Adeyemo', 1990);  
+// const john = new PersonCl('John', 1960);
+
 console.log(rhedwan) ;
 
 rhedwan.calcAge();
+console.log(rhedwan.age)
+
 console.log(rhedwan.__proto__ === PersonCl.prototype);
 
 // PersonCl.prototype.greet = function () {
@@ -151,13 +170,14 @@ console.log(rhedwan.__proto__ === PersonCl.prototype);
 // };
 
 rhedwan.greet();
- */
+
 // 1. Classes are not hoisted
 // 2. Classes are first-class citizens
 // 3. Classes are executed in strict mode
 // 4. Classes are not instances of other classes
 
 
+const bayo = new PersonCl('Adeyemo', 1980);
 
 const account = {
     owner : 'Rhedwan',
@@ -175,3 +195,6 @@ console.log(account.latest);
 account.latest = 300;
 console.log(account.latest);
 console.log(account.movements); 
+
+
+// Setters and Getters are used as a property descriptor
