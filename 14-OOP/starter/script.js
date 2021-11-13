@@ -161,6 +161,12 @@ class PersonCl {
         return this._fullName;
     }
 
+    // Static Methods
+    // They aren't available on the objects
+    static hey(){
+        console.log('Hey there 😎😎') ;
+        console.log(this)
+    }
 }
 
 const rhedwan = new PersonCl('Rhedwan Adeyemo', 1990);  
@@ -179,6 +185,8 @@ console.log(rhedwan.__proto__ === PersonCl.prototype);
 
 rhedwan.greet();
 
+PersonCl.hey();
+
 // 1. Classes are not hoisted
 // 2. Classes are first-class citizens
 // 3. Classes are executed in strict mode
@@ -187,7 +195,8 @@ rhedwan.greet();
 
 // const bayo = new PersonCl('Adeyemo', 1980);
 
-const account = {
+// Setters and Getters are used as a property descriptor
+/* const account = {
     owner : 'Rhedwan',
     movements : [200, -100, -300, 100],
 
@@ -202,7 +211,5 @@ const account = {
 console.log(account.latest);
 account.latest = 300;
 console.log(account.latest);
-console.log(account.movements); 
+console.log(account.movements);  */
 
-
-// Setters and Getters are used as a property descriptor
