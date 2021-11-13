@@ -1,4 +1,4 @@
-/* 'use strict';
+'use strict';
 
 // Constructor function
 const Person = function(firstName, birthYear) {
@@ -27,6 +27,14 @@ console.log(matilda, jack);
 console.log(john instanceof Person);
 
 console.log(Person.prototype);
+
+// Static Methods
+Person.hey = function () {
+    console.log('Hey there 😎😎') ;
+    console.log(this)
+};
+
+Person.hey();
 
 // Prototypes
 Person.prototype.calcAge = function() {
@@ -80,7 +88,7 @@ const h1  = document.querySelector('h1');
 console.dir(h1) ;
 console.log(h1.__proto__);
 
-console.dir(x =>  x + 1) ; */
+console.dir(x =>  x + 1) ; 
 
 
 // Coding Challenge #1
@@ -177,7 +185,7 @@ rhedwan.greet();
 // 4. Classes are not instances of other classes
 
 
-const bayo = new PersonCl('Adeyemo', 1980);
+// const bayo = new PersonCl('Adeyemo', 1980);
 
 const account = {
     owner : 'Rhedwan',
