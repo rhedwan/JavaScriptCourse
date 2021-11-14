@@ -273,3 +273,5 @@ ford.accelerate();
 ford.brake();
 ford.speedUS;
 ford.speedUS = 100;
+ford.speedUS;
+ford.brake();
