@@ -130,7 +130,7 @@ car2.accelerate(); */
 // };
 
 // class declaration
-class PersonCl {
+/* class PersonCl {
     constructor(fullName, birthYear) {
         this.fullName = fullName;
         this.birthYear = birthYear;
@@ -168,7 +168,6 @@ class PersonCl {
         console.log(this)
     }
 }
-
 const rhedwan = new PersonCl('Rhedwan Adeyemo', 1990);  
 // const john = new PersonCl('John', 1960);
 
@@ -186,6 +185,7 @@ console.log(rhedwan.__proto__ === PersonCl.prototype);
 rhedwan.greet();
 
 PersonCl.hey();
+*/
 
 // 1. Classes are not hoisted
 // 2. Classes are first-class citizens
@@ -320,7 +320,7 @@ Student.prototype.constructor = Student;
 console.dir(Student.prototype.constructor);
 
 // Challenge #2
-const Car = function(make, speed) {
+/* const Car = function(make, speed) {
     this.make = make ;
     this.speed = speed ;
 };
@@ -365,3 +365,49 @@ tesla.accelerate();
 tesla.brake();
 tesla.accelerate();
 tesla.accelerate();
+ */
+
+class PersonCl {
+    constructor(fullName, birthYear) {
+        this.fullName = fullName;
+        this.birthYear = birthYear;
+    }
+    calcAge() {
+        console.log(2037 - this.birthYear);
+    }
+
+    greet () {
+        console.log(`Hello, I am ${this.firstName}`);
+    };
+    
+    get age() {
+        return 2037 - this.birthYear;
+    };
+
+    set fullName(name) {
+        if(name.includes(' ')) this._fullName = name;
+        
+        else alert(`${name} is not full name. Please enter your full name`);
+    }
+
+    get fullName() {
+        return this._fullName;
+    }
+
+    static hey(){
+        console.log('Hey there 😎😎') ;
+        console.log(this)
+    }
+}
+
+class StudentCl extends PersonCl {
+    constructor(fullName, birthYear, course) {
+        // Always needs to happen first to access the 'this' keyword 
+        super(fullName, birthYear);
+        this.course = course;
+    }
+
+    introduce() {
+        console.log(`My name ${this.fullName} and I study ${this.course}`)
+    }
+}
