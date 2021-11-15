@@ -1,7 +1,7 @@
 'use strict';
 
 // Constructor function
-const Person = function(firstName, birthYear) {
+/* const Person = function(firstName, birthYear) {
     // Instance properties
     this.firstName = firstName;
     this.birthYear = birthYear;
@@ -90,7 +90,7 @@ console.log(h1.__proto__);
 
 console.dir(x =>  x + 1) ; 
 
-
+ */
 // Coding Challenge #1
 /* 
 const Car = function(make, speed){
@@ -240,7 +240,7 @@ sarah.calcAge();
 
 
 // Coding Challenge #2
-class CarCl {
+/* class CarCl {
     constructor(make, speed) {
         this.make = make;
         this.speed = speed;
@@ -275,3 +275,30 @@ ford.speedUS;
 ford.speedUS = 100;
 ford.speedUS;
 ford.brake();
+
+ */
+
+// Inheritance between classes
+const Person = function(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;  
+}; 
+
+
+Person.prototype.calcAge = function() {
+    console.log(2037 - this.birthYear);
+}
+
+const Student = function(firstName, birthYear, course) { 
+    this.firstName = firstName;
+    this.birthYear = birthYear; 
+    this.course = course;
+};
+
+Student.prototype.introduce = function(){
+    console.log(`My name ${this.firstName} and I study ${this.course}`)
+};
+
+const mike = new  Student('Mike', 2020, 'Computer Science');     
+console.log(mike);
+mike.introduce();
