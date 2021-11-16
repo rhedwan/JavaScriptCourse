@@ -420,6 +420,16 @@ class Account  {
         this.deposit(-val) ;
     }
 
+    approveLoan(val){
+        return true ;
+    }
+
+    requestLoan(val){
+        if(this.approveLoan(val)){
+            this.deposit(val)
+            console.log(`Loan approved`)
+        }
+    }
 }
 
 const acc1  = new Account('Ridwan', 'EUR', 1111) ;
@@ -434,3 +444,5 @@ acc1.deposit(250) ;
 acc1.withdraw(140) ;
 
 console.log(acc1);
+console.log(acc1.pin);
+acc1.requestLoan(230) ;
