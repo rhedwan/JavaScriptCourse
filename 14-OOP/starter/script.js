@@ -403,6 +403,7 @@ jay.introduce(); */
 // 2) Private fields
 // 3)  Public methods
 // 4) Private methods
+// There is also the static version
 
 class Account  {
 
@@ -417,7 +418,7 @@ class Account  {
     constructor(owner, currency, pin){
         this.owner  = owner ;
         this.currency = currency ;
-        this._pin = pin ;
+        this.#pin = pin ;
         // Protected Property
         // this._movements = [] ;
         // this.locale = navigator.language ;
@@ -426,7 +427,7 @@ class Account  {
     }
 
     // Public interface
-
+    // 3)  Public methods
     getMovements(){
         return this.#movements ;
     }
@@ -438,17 +439,21 @@ class Account  {
         // Accessing another method in the same class
         this.deposit(-val) ;
     }
-
-    _approveLoan(val){
-        return true ;
-    }
-
+    
     requestLoan(val){
+        // if(this.#approveLoan(val)){
         if(this._approveLoan(val)){
             this.deposit(val)
             console.log(`Loan approved`)
         }
     }
+
+    // 4) Private methods
+    // #approveLoan(val){
+    _approveLoan(val){
+        return true ;
+    }
+
 }
 
 const acc1  = new Account('Ridwan', 'EUR', 1111) ;
@@ -470,3 +475,4 @@ acc1.requestLoan(230) ;
 
 // Testing for Private fields
 // console.log(acc1.#movements) ;
+// console.log(acc1.#approveLoan(100));
