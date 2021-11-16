@@ -409,8 +409,10 @@ class Account  {
     // 1) Public fields (instances)
     locale = navigator.language ;
     
-    // 2) Private fields
+    // 2) Private fields (instances)
+    // There are available on the instances them self
     #movements = [] ;
+    #pin ;
 
     constructor(owner, currency, pin){
         this.owner  = owner ;
@@ -463,7 +465,7 @@ acc1.withdraw(140) ;
 console.log(acc1.getMovements()) ;
 
 console.log(acc1);
-console.log(acc1._pin);
+// console.log(acc1.#pin);
 acc1.requestLoan(230) ;
 
 // Testing for Private fields
