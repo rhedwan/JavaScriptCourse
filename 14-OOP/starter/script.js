@@ -319,7 +319,7 @@ console.log(mike instanceof Object) ;
 Student.prototype.constructor = Student;
 console.dir(Student.prototype.constructor);
 
-// Challenge #2
+// Challenge #3
 /* const Car = function(make, speed) {
     this.make = make ;
     this.speed = speed ;
@@ -484,3 +484,58 @@ acc1.requestLoan(230) ;
 // Chaining Methods
 acc1.deposit(300).deposit(459).withdraw(200).requestLoan(50).withdraw(300) ;
 console.log(acc1.getMovements()) ;
+
+// Challenge #3
+class CarCl {
+    constructor(make, speed){
+        this.make = make ;
+        this.speed = speed ;
+    }
+    accelerate () {
+        this.speed += 10;
+        console.log(`${this.make} is going at ${this.speed}km/h`);
+        return this ;
+    }
+    
+    brake () {
+        this.speed -= 5;
+        console.log(`${this.make} is decreasing to ${this.speed}km/h`);
+        return this ;
+    }
+};
+
+   
+
+class EVCl extends CarCl {
+    #charge ;
+    constructor(make, speed, charge){
+        super(make, speed) ;
+        this.#charge = charge ;
+    }
+    chargeBattery(chargeTo) {
+        this.#charge = chargeTo;
+        return this ;
+    };
+
+    accelerate () {
+        this.speed += 20;
+        this.#charge -= 1;
+        console.log(`${this.make} going at ${this.speed}km/h, with a charge of ${this.#charge}%`)
+        return this ;
+    };
+
+};
+
+
+const tesla = new EVCl('Tesla', 120, 23);
+console.log(tesla);
+
+tesla.chargeBattery(50);
+console.log(tesla);
+
+tesla.accelerate();
+tesla.brake();
+tesla.accelerate();
+console.log(tesla);
+tesla.accelerate().chargeBattery(30).brake();
+console.log(tesla);
