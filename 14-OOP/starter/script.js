@@ -391,5 +391,10 @@ StudentProto.init = function(firstName, birthName, course){
     this.course = course;   
 }
 
+StudentProto.introduce = function() {
+    console.log(`My name ${this.firstName} and I study ${this.course}`)
+}
+
 jay.init('Jay', 2000, 'Mathematics');
 jay.calcAge();
+jay.introduce();
