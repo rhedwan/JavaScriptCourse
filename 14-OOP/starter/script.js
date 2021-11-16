@@ -411,11 +411,26 @@ class Account  {
         console.log(`Thanks for opening an account, ${owner}`) ;
     }
 
+    // Public interface
+    deposit(val){
+        this.movements.push(val);
+    }
+    withdraw(val){
+        // Accessing another method in the same class
+        this.deposit(-val) ;
+    }
+
 }
 
 const acc1  = new Account('Ridwan', 'EUR', 1111) ;
 console.log(acc1);
 
+/* 
+// Interacting with the object direct 
 acc1.movements.push(250)
-acc1.movements.push(-140) 
+acc1.movements.push(-140) */ 
+
+acc1.deposit(250) ;
+acc1.withdraw(140) ;
+
 console.log(acc1);
