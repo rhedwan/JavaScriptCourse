@@ -434,10 +434,13 @@ class Account  {
 
     deposit(val){
         this.#movements.push(val);
+        return this ;
     }
     withdraw(val){
         // Accessing another method in the same class
         this.deposit(-val) ;
+        return this ;
+
     }
     
     requestLoan(val){
@@ -445,6 +448,7 @@ class Account  {
         if(this._approveLoan(val)){
             this.deposit(val)
             console.log(`Loan approved`)
+            return this ;
         }
     }
 
@@ -476,3 +480,7 @@ acc1.requestLoan(230) ;
 // Testing for Private fields
 // console.log(acc1.#movements) ;
 // console.log(acc1.#approveLoan(100));
+
+// Chaining Methods
+acc1.deposit(300).deposit(459).withdraw(200).requestLoan(50).withdraw(300) ;
+console.log(acc1.getMovements()) ;
