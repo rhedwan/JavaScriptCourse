@@ -399,16 +399,18 @@ jay.init('Jay', 2000, 'Mathematics');
 jay.calcAge();
 jay.introduce(); */
 
-// Public fields
-// Private fields
-// Public methods
-// Private methods
+// 1) Public fields
+// 2) Private fields
+// 3)  Public methods
+// 4) Private methods
 
 class Account  {
 
-    // Public fields (instances)
+    // 1) Public fields (instances)
     locale = navigator.language ;
-    _movements = [] ;
+    
+    // 2) Private fields
+    #movements = [] ;
 
     constructor(owner, currency, pin){
         this.owner  = owner ;
@@ -424,11 +426,11 @@ class Account  {
     // Public interface
 
     getMovements(){
-        return this._movements ;
+        return this.#movements ;
     }
 
     deposit(val){
-        this._movements.push(val);
+        this.#movements.push(val);
     }
     withdraw(val){
         // Accessing another method in the same class
@@ -463,3 +465,6 @@ console.log(acc1.getMovements()) ;
 console.log(acc1);
 console.log(acc1._pin);
 acc1.requestLoan(230) ;
+
+// Testing for Private fields
+// console.log(acc1.#movements) ;
