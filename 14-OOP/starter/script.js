@@ -486,7 +486,7 @@ acc1.deposit(300).deposit(459).withdraw(200).requestLoan(50).withdraw(300) ;
 console.log(acc1.getMovements()) ;
 
 // Challenge #3
-c/* lass CarCl {
+/*class CarCl {
     constructor(make, speed){
         this.make = make ;
         this.speed = speed ;
