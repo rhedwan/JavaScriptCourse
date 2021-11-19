@@ -483,6 +483,7 @@ acc1.requestLoan(230) ;
 
 // Chaining Methods
 acc1.deposit(300).deposit(459).withdraw(200).requestLoan(50).withdraw(300) ;
+acc1.deposit(300).deposit(459).withdraw(200).requestLoan(50).withdraw(300) ;
 console.log(acc1.getMovements()) ;
 
 // Challenge #3
