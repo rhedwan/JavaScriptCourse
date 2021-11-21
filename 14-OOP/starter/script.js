@@ -279,7 +279,7 @@ ford.brake();
  */
 
 // Inheritance between classes
-const Person = function(firstName, birthYear) {
+/* const Person = function(firstName, birthYear) {
     this.firstName = firstName;
     this.birthYear = birthYear;  
 }; 
@@ -318,7 +318,7 @@ console.log(mike instanceof Object) ;
 // This makes the Student prototype itself rather than the Person prototype
 Student.prototype.constructor = Student;
 console.dir(Student.prototype.constructor);
-
+ */
 // Challenge #3
 /* const Car = function(make, speed) {
     this.make = make ;
