@@ -32,7 +32,7 @@ class Running extends Workout {
     calcPace(){
         // min/km
         this.pace = this.duration / this.distance;
-        return this ;
+        return this.pace ;
     }
 }
 
@@ -40,9 +40,19 @@ class Cycling extends Workout {
     constructor(coords, distance, duration, elevationGain){
         super(coords, distance, duration);
         this.elevationGain = elevationGain ;
+        this.calcPace();
+    }
+
+    calcSpeed(){
+        this.speed = this.distance / this.duration / 60 ;
+        return this.speed ;
     }
 }
 
+const run1 = new Running(['48.856614', '2.352222'], 5, 30, 80);
+
+
+// APPLICATION ARCHITECTURE
 class App {
     #map ;
     #mapEvent ;
