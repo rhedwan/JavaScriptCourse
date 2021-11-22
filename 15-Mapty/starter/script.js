@@ -16,7 +16,7 @@ class Workout {
     date = new Date();
     id = (new Date() + '').slice(-10);
     constructor(coords, distance, duration) {
-        this.coords = coords;
+        this.coords = coords; // [this.lat, this.lng] = coords;
         this.distance = distance; //in Km
         this.duration = duration; //in min
     }
@@ -40,7 +40,7 @@ class Cycling extends Workout {
     constructor(coords, distance, duration, elevationGain){
         super(coords, distance, duration);
         this.elevationGain = elevationGain ;
-        this.calcPace();
+        this.calcSpeed();
     }
 
     calcSpeed(){
@@ -49,8 +49,9 @@ class Cycling extends Workout {
     }
 }
 
-const run1 = new Running(['48.856614', '2.352222'], 5, 30, 80);
-
+const run1 = new Running([39, -12], 5, 30, 178);
+const cycling1 = new Cycling([48.856614, 2.352222], 127, 5, 523);
+console.log(run1, cycling1);
 
 // APPLICATION ARCHITECTURE
 class App {
