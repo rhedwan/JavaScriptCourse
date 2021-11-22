@@ -11,12 +11,13 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
-let map, mapEvent;
 class App {
     #map ;
     #mapEvent ;
     constructor() {
         this._getPosition();
+        form.addEventListener('submit', this._newWorkout.bind(this));
+        inputType.addEventListener('change', this._toggleElevationField);
     }
     _getPosition() {
         if(navigator.geolocation) 
@@ -40,29 +41,25 @@ class App {
         }).addTo(this.#map);
 
         // Map EventListerner => handling clicks on map
-        this.#map.on('click', function(mapE){
-            this.#mapEvent = mapE;
-            form.classList.remove('hidden');
-            inputDistance.focus();
-            
-        } );
+        this.#map.on('click', this._showForm.bind(this));
     }
-    _showForm(){}
-    _toggleElevationField(){}
-    _newWorkout(){}
-}
+    _showForm(mapE){
+        this.#mapEvent = mapE;
+        form.classList.remove('hidden');
+        inputDistance.focus();
 
-const app = new App();
-
-    form.addEventListener('submit', function(e){
+    }
+    _toggleElevationField(){
+        inputElevation.closest('.form__row').classList.toggle('form__row--hidden') ;
+        inputCadence.closest('.form__row').classList.toggle('form__row--hidden') ;
+    }
+    _newWorkout(e){
         // Clear input fields
         inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = '' ;
-        
-
         e.preventDefault();
         // Display the marker
-        const { lat, lng} = mapEvent.latlng;
-        L.marker([lat, lng]).addTo(map)
+        const { lat, lng} = this.#mapEvent.latlng;
+        L.marker([lat, lng]).addTo(this.#map)
         .bindPopup(
             // Overwrting some default values/behaviour
             // https://leafletjs.com/reference.html#popup
@@ -76,8 +73,9 @@ const app = new App();
         )
         .setPopupContent(`Workout`)
         .openPopup();
-    });
-    inputType.addEventListener('change', function(){
-        inputElevation.closest('.form__row').classList.toggle('form__row--hidden') ;
-        inputCadence.closest('.form__row').classList.toggle('form__row--hidden') ;
-    });
+    }
+}
+
+const app = new App();
+
+    
