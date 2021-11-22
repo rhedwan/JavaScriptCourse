@@ -31,7 +31,18 @@ if(navigator.geolocation)
             console.log(mapEvent);
             const { lat, lng} = mapEvent.latlng;
             L.marker([lat, lng]).addTo(map)
-            .bindPopup('Workout')
+            .bindPopup(
+                // Overwrting some default values/behaviour
+                // https://leafletjs.com/reference.html#popup
+                L.popup({
+                    maxWidth: 250,
+                    minWidth:100,
+                    autoClose:false,
+                    closeOnClick:false,
+                    className : 'running-popup'
+                })
+            )
+            .setPopupContent(`Workout`)
             .openPopup();
         } );
     }, function () {
