@@ -13,12 +13,14 @@ const inputElevation = document.querySelector('.form__input--elevation');
 
 let map, mapEvent;
 class App {
+    #map ;
+    #mapEvent ;
     constructor() {
-
+        this._getPosition();
     }
     _getPosition() {
         if(navigator.geolocation) 
-            navigator.geolocation.getCurrentPosition(this._loadMap, function () {
+            navigator.geolocation.getCurrentPosition(this._loadMap.bind(this), function () {
                 alert('Geolocation is not supported by this browser.');
             });
     }
@@ -28,17 +30,18 @@ class App {
         console.log(`https://www.google.com.ng/maps/@${latitude},${longitude}`)
 
         const coords = [latitude, longitude]
-
-        map = L.map('map').setView(coords, 14);
+        
+        console.log(this) ;
+        this.#map = L.map('map').setView(coords, 14);
         // console.log(map);
 
         L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+        }).addTo(this.#map);
 
         // Map EventListerner => handling clicks on map
-        map.on('click', function(mapE){
-            mapEvent = mapE;
+        this.#map.on('click', function(mapE){
+            this.#mapEvent = mapE;
             form.classList.remove('hidden');
             inputDistance.focus();
             
@@ -50,7 +53,6 @@ class App {
 }
 
 const app = new App();
-app._getPosition();
 
     form.addEventListener('submit', function(e){
         // Clear input fields
