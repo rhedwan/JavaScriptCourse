@@ -11,21 +11,18 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
-
+let map, mapEvent;
 class App {
     constructor() {
 
     }
-    _getPosition() {}
-    _loadMap() {}
-    _showForm(){}
-    _toggleElevationField(){}
-    _newWorkout(){}
-}
-
-let map, mapEvent;
-if(navigator.geolocation) 
-    navigator.geolocation.getCurrentPosition(function (position) {
+    _getPosition() {
+        if(navigator.geolocation) 
+            navigator.geolocation.getCurrentPosition(this._loadMap, function () {
+                alert('Geolocation is not supported by this browser.');
+            });
+    }
+    _loadMap(position) {
         const { latitude, longitude } = position.coords;
         console.log(latitude, longitude);
         console.log(`https://www.google.com.ng/maps/@${latitude},${longitude}`)
@@ -46,9 +43,14 @@ if(navigator.geolocation)
             inputDistance.focus();
             
         } );
-    }, function () {
-        alert('Geolocation is not supported by this browser.');
-    } );
+    }
+    _showForm(){}
+    _toggleElevationField(){}
+    _newWorkout(){}
+}
+
+const app = new App();
+app._getPosition();
 
     form.addEventListener('submit', function(e){
         // Clear input fields
