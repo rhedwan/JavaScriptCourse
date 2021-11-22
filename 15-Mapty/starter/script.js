@@ -11,6 +11,18 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
+
+class App {
+    constructor() {
+
+    }
+    _getPosition() {}
+    _loadMap() {}
+    _showForm(){}
+    _toggleElevationField(){}
+    _newWorkout(){}
+}
+
 let map, mapEvent;
 if(navigator.geolocation) 
     navigator.geolocation.getCurrentPosition(function (position) {
