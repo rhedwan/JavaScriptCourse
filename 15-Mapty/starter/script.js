@@ -1,7 +1,5 @@
 'use strict';
 
-// prettier-ignore
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 
 class Workout {
@@ -10,7 +8,12 @@ class Workout {
     constructor(coords, distance, duration) {
         this.coords = coords; // [this.lat, this.lng] = coords;
         this.distance = distance; //in Km
-        this.duration = duration; //in min
+        this.duration = duration; //in min 
+    }
+    _setDescription() {
+        // prettier-ignore
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        this.description = `${this.type[0].toUpperCase()}${this.type.slice(1)} on ${months[this.date.getMonth()]} ${this.date.getDate()}`
     }
 }
 
@@ -20,6 +23,7 @@ class Running extends Workout {
         super(coords, distance, duration);
         this.cadence = cadence ;
         this.calcPace();
+        this._setDescription();
     }
 
     calcPace(){
@@ -35,6 +39,7 @@ class Cycling extends Workout {
         super(coords, distance, duration);
         this.elevationGain = elevationGain ;
         this.calcSpeed();
+        this._setDescription();
     }
 
     calcSpeed(){
@@ -146,17 +151,17 @@ class App {
         console.log(this.#workouts)
 
         // Render workout on map as marker
-        this.renderWorkoutMarker(workout);
+        this._renderWorkoutMarker(workout);
 
         // Render workout on list
-
+        this._renderWorkout(workout)
 
         // Clear input fields
         inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = '' ;
         
     }
 
-    renderWorkoutMarker(workout){
+    _renderWorkoutMarker(workout){
         // Render workout on map as marker
         // Display the marker
 
@@ -174,6 +179,23 @@ class App {
         )
         .setPopupContent('workout')
         .openPopup();
+    }
+    _renderWorkout(workout){
+        const html = `
+        <li class="workout workout--${workout.type}" data-id="${workout.id}">
+          <h2 class="workout__title">${workout.description}</h2>
+          <div class="workout__details">
+            <span class="workout__icon">${workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'}</span>
+            <span class="workout__value">${workout.distance}</span>
+            <span class="workout__unit">km</span>
+          </div>
+          <div class="workout__details">
+            <span class="workout__icon">⏱</span>
+            <span class="workout__value">${workout.duration}</span>
+            <span class="workout__unit">min</span>
+          </div>
+        </li>
+        `
     }
 }
 
