@@ -49,9 +49,9 @@ class Cycling extends Workout {
     }
 }
 
-const run1 = new Running([39, -12], 5, 30, 178);
-const cycling1 = new Cycling([48.856614, 2.352222], 127, 5, 523);
-console.log(run1, cycling1);
+// const run1 = new Running([39, -12], 5, 30, 178);
+// const cycling1 = new Cycling([48.856614, 2.352222], 127, 5, 523);
+// console.log(run1, cycling1);
 
 // APPLICATION ARCHITECTURE
 class App {
@@ -96,10 +96,20 @@ class App {
         inputElevation.closest('.form__row').classList.toggle('form__row--hidden') ;
         inputCadence.closest('.form__row').classList.toggle('form__row--hidden') ;
     }
-    _newWorkout(e){
-        // Clear input fields
-        inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = '' ;
+    _newWorkout(e){ 
         e.preventDefault();
+        // Get data from  form
+
+        // Check if data is valid
+        
+        // If workout running, create running object
+        
+        // If workout cycling, create cycling object
+
+        // Add new object to workout array
+
+        // Render workout on map as marker
+        
         // Display the marker
         const { lat, lng} = this.#mapEvent.latlng;
         L.marker([lat, lng]).addTo(this.#map)
@@ -116,6 +126,13 @@ class App {
         )
         .setPopupContent(`Workout`)
         .openPopup();
+
+        // Render workout on list
+
+
+        // Clear input fields
+        inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = '' ;
+        
     }
 }
 
