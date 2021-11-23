@@ -99,11 +99,11 @@ class App {
     _newWorkout(e){ 
         e.preventDefault();
 
-        const validInputs = (...inputs) => inputs.every(input => Number.isFinite(input.value));
+        const validInputs = (...inputs) => inputs.every(input => Number.isFinite(input));
         // Get data from form
         const type = inputType.value ;
         const distance = +inputDistance.value ;
-        const duration = inputDuration.value ;
+        const duration = +inputDuration.value ;
 
         
         // If workout running, create running object
@@ -116,7 +116,8 @@ class App {
             //     !Number.isFinite(duration) ||
             //     !Number.isFinite(cadence)
             //     ) return alert('Inputs have to be positive numbers!') ;
-            if(!validInputs(distance, duration, cadence)) return alert('Inputs have to be positive numbers!') ;
+            
+            if(!validInputs(distance, duration, cadence)) return alert('Inputs have to be positive numbers!😏😏') ;
         }
         
         // If workout cycling, create cycling object
