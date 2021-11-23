@@ -3,14 +3,6 @@
 // prettier-ignore
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-const form = document.querySelector('.form');
-const containerWorkouts = document.querySelector('.workouts');
-const inputType = document.querySelector('.form__input--type');
-const inputDistance = document.querySelector('.form__input--distance');
-const inputDuration = document.querySelector('.form__input--duration');
-const inputCadence = document.querySelector('.form__input--cadence');
-const inputElevation = document.querySelector('.form__input--elevation');
-
 
 class Workout {
     date = new Date();
@@ -52,6 +44,14 @@ class Cycling extends Workout {
 // const run1 = new Running([39, -12], 5, 30, 178);
 // const cycling1 = new Cycling([48.856614, 2.352222], 127, 5, 523);
 // console.log(run1, cycling1);
+
+const form = document.querySelector('.form');
+const containerWorkouts = document.querySelector('.workouts');
+const inputType = document.querySelector('.form__input--type');
+const inputDistance = document.querySelector('.form__input--distance');
+const inputDuration = document.querySelector('.form__input--duration');
+const inputCadence = document.querySelector('.form__input--cadence');
+const inputElevation = document.querySelector('.form__input--elevation');
 
 // APPLICATION ARCHITECTURE
 class App {
@@ -98,7 +98,10 @@ class App {
     }
     _newWorkout(e){ 
         e.preventDefault();
-        // Get data from  form
+        // Get data from form
+        const type = inputType.value ;
+        const distance = +inputDistance.value ;
+        const duration = inputDuration.value ;
 
         // Check if data is valid
         
@@ -109,7 +112,7 @@ class App {
         // Add new object to workout array
 
         // Render workout on map as marker
-        
+
         // Display the marker
         const { lat, lng} = this.#mapEvent.latlng;
         L.marker([lat, lng]).addTo(this.#map)
