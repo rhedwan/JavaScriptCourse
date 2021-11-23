@@ -106,9 +106,14 @@ class App {
         // Check if data is valid
         
         // If workout running, create running object
+        if(type === 'running') {
+            const cadence = +inputCadence.value ;
+        }
         
         // If workout cycling, create cycling object
-
+        if(type === 'cycling') {
+            const elevation = +inputElevation.value ;
+        }
         // Add new object to workout array
 
         // Render workout on map as marker
