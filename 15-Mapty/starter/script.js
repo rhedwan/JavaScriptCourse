@@ -5,6 +5,7 @@
 class Workout {
     date = new Date();
     id = (Date.now() + '').slice(-10);
+    clicks = 0;
     constructor(coords, distance, duration) {
         this.coords = coords; // [this.lat, this.lng] = coords;
         this.distance = distance; //in Km
@@ -14,6 +15,9 @@ class Workout {
         // prettier-ignore
         const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         this.description = `${this.type[0].toUpperCase()}${this.type.slice(1)} on ${months[this.date.getMonth()]} ${this.date.getDate()}`
+    }
+    click() {
+        this.clicks ++
     }
 }
 
@@ -242,8 +246,6 @@ class App {
         const workoutEl = e.target.closest('.workout') ;
         if(!workoutEl) return ;
         const workout  = this.#workouts.find(work => work.id === workoutEl.dataset.id) ;
-        console.log(workoutEl) ;
-        console.log(workout) ;  
 
         this.#map.setView(workout.coords, this.#mapZoomLevel, {
             animate:true,
@@ -251,6 +253,8 @@ class App {
                 duration: 1,
             }
         }) ;
+        // public interface
+        workout.click();
     }
 }
 
