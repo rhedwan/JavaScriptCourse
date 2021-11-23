@@ -90,12 +90,9 @@ class App {
     }
     _loadMap(position) {
         const { latitude, longitude } = position.coords;
-        console.log(latitude, longitude);
-        console.log(`https://www.google.com.ng/maps/@${latitude},${longitude}`)
 
         const coords = [latitude, longitude]
         
-        console.log(this) ;
         this.#map = L.map('map').setView(coords, this.#mapZoomLevel);
         // console.log(map);
 
@@ -172,8 +169,6 @@ class App {
 
         // Add new object to workout array
         this.#workouts.push(workout);
-        console.log(workout);
-        console.log(this.#workouts)
 
         // Render workout on map as marker
         this._renderWorkoutMarker(workout);
@@ -267,7 +262,7 @@ class App {
             }
         }) ;
         //using the public interface
-        workout.click();
+        // workout.click();
     }
     _setLocalStorage(){
         localStorage.setItem('workouts', JSON.stringify(this.#workouts));
