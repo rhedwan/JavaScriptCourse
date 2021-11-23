@@ -100,6 +100,7 @@ class App {
         e.preventDefault();
 
         const validInputs = (...inputs) => inputs.every(input => Number.isFinite(input));
+        const allPostive = (...inputs) => inputs.every(input => input > 0);
         // Get data from form
         const type = inputType.value ;
         const distance = +inputDistance.value ;
@@ -117,14 +118,20 @@ class App {
             //     !Number.isFinite(cadence)
             //     ) return alert('Inputs have to be positive numbers!') ;
             
-            if(!validInputs(distance, duration, cadence)) return alert('Inputs have to be positive numbers!😏😏') ;
+            if(
+            !validInputs(distance, duration, cadence) || 
+            !allPostive(distance, duration, cadence)
+            ) return alert('Inputs have to be positive numbers!😏😏') ;
         }
         
         // If workout cycling, create cycling object
         if(type === 'cycling') {
             const elevation = +inputElevation.value ;
             // Check if data is valid
-            if(!validInputs(distance, duration, elevation)) return alert('Inputs have to be positive numbers!') ;
+            if(
+            !validInputs(distance, duration, elevation) || 
+            !allPostive(distance, duration)
+            ) return alert('Inputs have to be positive numbers!') ;
         }
 
 
