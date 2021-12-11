@@ -36,7 +36,7 @@ getCountryData('nigeria');
 getCountryData('spain');
 getCountryData('usa');
 */
-
+/* 
 const renderCountry = function (data , className='') {
     const html = `
     <article class="country ${className}">
@@ -86,3 +86,7 @@ const getCountryAndNeighbour = function (country) {
 
 // getCountryAndNeighbour('nigeria');      
 getCountryAndNeighbour('usa');      
+ */
+
+const request = fetch(`https://restcountries.com/v2/name/nigeria`) ;
+console.log(request) ;
