@@ -117,7 +117,15 @@ const getCountryData = function (country) {
         return fetch(`https://restcountries.com/v2/alpha/${neighbour}`)
     })
     .then(response => response.json())
-    .then(data => renderCountry(data, 'neighbour'));
+    .then(data =>{ 
+        renderCountry(data, 'neighbour')
+        const neighbour1 = data.borders[0];
+        return fetch(`https://restcountries.com/v2/alpha/${neighbour1}`)
+    })
+    .then(response => response.json())
+    .then(data =>{ 
+        renderCountry(data, 'neighbour')
+    })
 
 };
 getCountryData('nigeria');
