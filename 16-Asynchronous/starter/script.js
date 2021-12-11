@@ -84,4 +84,5 @@ const getCountryAndNeighbour = function (country) {
     });
 };
 
-getCountryAndNeighbour('nigeria');      
+// getCountryAndNeighbour('nigeria');      
+getCountryAndNeighbour('usa');      
