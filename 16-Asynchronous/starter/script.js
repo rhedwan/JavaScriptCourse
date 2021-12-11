@@ -55,6 +55,11 @@ const renderCountry = function (data , className='') {
     countriesContainer.style.opacity = 1;
 };
 
+const renderError = function (msg) {
+    countriesContainer.insertAdjacentText('beforeend', msg);
+    countriesContainer.style.opacity = 1;
+};
+
 /* 
 const getCountryAndNeighbour = function (country) {
 
@@ -120,11 +125,13 @@ const getCountryData = function (country) {
     .then(data =>{ 
         renderCountry(data, 'neighbour')
     })
-    .catch(err => alert(err))
+    .catch(err => {
+        console.error(`${err}👲👲💥💥💥`)
+        renderError(`Something went wrong💥💥💥.Try Again. ${err}`)
+    })
 };
 
 btn.addEventListener('click', function () {
     getCountryData('nigeria');
-
 })
 // getCountryData('germany');
