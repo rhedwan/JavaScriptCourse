@@ -107,7 +107,7 @@ getCountryAndNeighbour('usa');
 
 const getCountryData = function (country) {
     fetch(`https://restcountries.com/v2/name/${country}`)
-    .then(response =>  response.json())
+    .then(response =>  response.json(), err => alert(err))
     .then(data => {
         renderCountry(data[0]) 
         const neighbour = data[0].borders[0];
