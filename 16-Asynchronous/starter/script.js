@@ -128,5 +128,9 @@ const getCountryData = function (country) {
     })
 
 };
-getCountryData('nigeria');
+
+btn.addEventListener('click', function () {
+    getCountryData('nigeria');
+
+})
 // getCountryData('germany');
