@@ -111,7 +111,7 @@ getCountryAndNeighbour('usa');
 // getCountryData('nigeria');
 
 const getCountryData = function (country) {
-    fetch(`https://restcountries.com/v2/name/${country}`)
+    fetch(`https://restcountries.com/rest/v2/name/${country}`)
     .then(response => {
         if(!response.ok) {
             throw new Error(`Country Not Found ${response.status} ${response.statusText}`);
@@ -146,7 +146,7 @@ const getCountryData = function (country) {
 };
 
 btn.addEventListener('click', function () {
-    getCountryData('nigeria');
-    // getCountryData('dfdsfagar');
+    // getCountryData('nigeria');
+    getCountryData('dfdsfagar');
 })
 // getCountryData('germany');
