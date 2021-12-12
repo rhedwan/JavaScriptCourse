@@ -120,13 +120,19 @@ const getCountryData = function (country) {
     })
     .then(data => {
         renderCountry(data[0]) 
-        const neighbour = data[0].borders[0];
+        // const neighbour = data[0].borders[0];
+        const neighbour = 'asdadrad';
         if (!neighbour) return;
 
         // Country 2 
-        return fetch(`https://restcountries.com/v2/alpha/${neighbour}`)
+        return fetch(`https://restcountries.com/rest/v2/alpha/${neighbour}`)
     })
-    .then(response => response.json())
+    .then(response => {
+        if(!response.ok) {
+            throw new Error(`Country ${response.statusText} (${response.status}) `);
+        }
+        return response.json()
+    })
     .then(data =>{ 
         renderCountry(data, 'neighbour')
     })
@@ -140,7 +146,7 @@ const getCountryData = function (country) {
 };
 
 btn.addEventListener('click', function () {
-    // getCountryData('nigeria');
-    getCountryData('dfdsfagar');
+    getCountryData('nigeria');
+    // getCountryData('dfdsfagar');
 })
 // getCountryData('germany');
