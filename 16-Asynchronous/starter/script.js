@@ -110,7 +110,44 @@ getCountryAndNeighbour('usa');
 // };
 // getCountryData('nigeria');
 
+const getJSON = function (url, errorMsg='Something went wrong. Try Again') {
+    return fetch(url)
+    .then(response => {
+        if(!response.ok) throw new Error(`${errorMsg} ${response.status}`);
+    
+        return response.json();
+    });
+};
+
 const getCountryData = function (country) {
+    
+    // Country 1
+    getJSON(`https://restcountries.com/v2/name/${country}`, 'Country Not Found')
+    .then(data => {
+        renderCountry(data[0]) 
+        console.log(data[0]);
+        console.log(data[0].borders);   
+        const neighbour = data[0].borders[0];
+        // const neighbour = 'asdadrad';
+
+        if (!neighbour) throw new Error('No neighbour found 💥💥💥');
+
+        // Country 2 
+        return getJSON(`https://restcountries.com/v2/alpha/${neighbour}`, 'Country Not Found')
+    })
+    .then(data =>{ 
+        renderCountry(data, 'neighbour')
+    })
+    .catch(err => {
+        console.error(`${err}👲👲💥💥💥`)
+        renderError(`Something went wrong💥💥💥.Try Again. ${err.message}`)
+    })
+    .finally(() => {
+        countriesContainer.style.opacity = 1;
+    })
+}
+
+/* const getCountryData = function (country) {
     fetch(`https://restcountries.com/rest/v2/name/${country}`)
     .then(response => {
         if(!response.ok) {
@@ -143,10 +180,11 @@ const getCountryData = function (country) {
     .finally(() => {
         countriesContainer.style.opacity = 1;
     })
-};
+}; */
 
 btn.addEventListener('click', function () {
     // getCountryData('nigeria');
-    getCountryData('dfdsfagar');
+    getCountryData('australia');
+    // getCountryData('dfdsfagar');
 })
 // getCountryData('germany');
