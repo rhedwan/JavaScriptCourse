@@ -192,7 +192,7 @@ btn.addEventListener('click', function () {
 const getPosition = function () {
     navigator.geolocation.getCurrentPosition(function(position){
         const {latitude, longitude} = position.coords;;     
-        getGeo(latitude, longitude);
+        whereAmI(latitude, longitude);
         return position;
     }, function () {
         alert('Geolocation is not supported by this browser.');
