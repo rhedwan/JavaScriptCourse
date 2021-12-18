@@ -188,3 +188,14 @@ btn.addEventListener('click', function () {
     // getCountryData('dfdsfagar');
 })
 // getCountryData('germany');
+
+const getGeo = function(){
+    fetch(`https://geocode.xyz/51.50354,-0.12768?geoit=json`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        return data
+    })
+}
+
+getGeo();
