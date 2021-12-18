@@ -189,8 +189,21 @@ btn.addEventListener('click', function () {
 })
 // getCountryData('germany');
 
-const getGeo = function(){
-    fetch(`https://geocode.xyz/51.50354,-0.12768?geoit=json`)
+const getPosition = function () {
+    navigator.geolocation.getCurrentPosition(function(position){
+        const {latitude, longitude} = position.coords;;     
+        getGeo(latitude, longitude);
+        return position;
+    }, function () {
+        alert('Geolocation is not supported by this browser.');
+    })
+}
+getPosition();
+
+const whereAmI = function(latitude, longitude){
+    
+    
+    fetch(`https://geocode.xyz/${latitude},${longitude}?geoit=json`)
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -198,4 +211,4 @@ const getGeo = function(){
     })
 }
 
-getGeo();
+whereAmI();
