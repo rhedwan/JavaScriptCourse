@@ -333,16 +333,18 @@ const whereAmI = function(){
 } ;
 
 btn.addEventListener('click', whereAmI) */
+const imgContainer = document.querySelector('.images');
 
 const createImage = function (imgPath) {
-    const img  = document.createElement('img') ;
-    const images = document.querySelector('.images');
-    img.src = imgPath ;
-    console.log(img) ;
-    img.addEventListener('load', function () {
-        images.appendChild(img);    
-        return new Promise(function(resolve, reject){
-            resolve(img);
+    return new Promise(function(resolve, reject){
+        const img  = document.createElement('img') ;
+        img.src = imgPath ;
+        img.addEventListener('load', function () {
+            imgContainer.appendChild(img);    
+            resolve(img)
+        })
+        img.addEventListener('error', function () {
+            reject(new Error('Something Occur'))
         })
     })
 };
