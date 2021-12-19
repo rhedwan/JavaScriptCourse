@@ -344,8 +344,11 @@ const createImage = function (imgPath) {
             resolve(img)
         })
         img.addEventListener('error', function () {
-            reject(new Error('Something Occur'))
+            reject(new Error('Something Unexpected Occur'))
         })
     })
 };
-createImage(`img/img-1.jpg`);
+// createImage(``)
+createImage(`img/img-1.jpg`)
+.then(res => console.log(res))
+.catch(err => console.log(`Error: ${err.message}`))
