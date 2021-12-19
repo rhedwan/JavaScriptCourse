@@ -253,12 +253,16 @@ Promise.resolve('Resolved Promise 2').then(res =>{
 console.log('Test end') ; */
 
 const lotteryPromise = new Promise(function (resolve, reject) {
-    const random = Math.random();
-    if (random < 0.5) {
-        resolve('You WON 🎁✨')
-    } else {
-        reject('You lost the lottery')
-    }   
+    console.log('Lottery draw is happening 💥💥💥');
+    setTimeout(() => {
+        const random = Math.random();
+        if (random < 0.5) {
+            resolve('You WON 🎁✨')
+        } else {
+            reject(new Error('You lost the lottery'));
+        }  
+    }, 2000);
+
 }) ;
 
 lotteryPromise.then(res => console.log(res)).catch(err => console.log(err)) ;
