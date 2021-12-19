@@ -228,8 +228,16 @@ const whereAmI = function(latitude, longitude){
     .then(data => {
         console.log(data);
         console.log(`You are in ${data.city}, ${data.country}`)
-        renderGeo(data) ;
-        return data
+        return fetch(`https://restcountries.com/v2/name/${data.country}`)
+    })
+    .then(response => {
+        if(!response.ok) {
+            throw new Error(`Country Not Found ${response.status} ${response.statusText}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        renderCountry(data[0]) 
     })
     .catch(err => {
         console.log(`Error: ${err.message}`)
