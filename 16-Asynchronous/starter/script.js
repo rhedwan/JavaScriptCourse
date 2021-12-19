@@ -237,6 +237,7 @@ whereAmI(19.037, 72.873);
 whereAmI(-33.933, 18.474);
  */
 
+/* 
 // Event loop in pratice
 // Event loop is a series of events that happen in a specific order.
 // The event loop is a single thread.
@@ -249,4 +250,15 @@ Promise.resolve('Resolved Promise 2').then(res =>{
     for (let i = 0; i < 10000 ; i++) {}
     console.log(res)
 }) ;
-console.log('Test end') ;
+console.log('Test end') ; */
+
+const lotteryPromise = new Promise(function (resolve, reject) {
+    const random = Math.random();
+    if (random < 0.5) {
+        resolve('You WON 🎁✨')
+    } else {
+        reject('You lost the lottery')
+    }   
+}) ;
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.log(err)) ;
