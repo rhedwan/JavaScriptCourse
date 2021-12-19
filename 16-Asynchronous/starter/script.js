@@ -204,11 +204,19 @@ const whereAmI = function(latitude, longitude){
     
     
     fetch(`https://geocode.xyz/${latitude},${longitude}?geoit=json`)
-    .then(response => response.json())
+    .then(response => {
+        if(!response.ok) throw new Error(`Too many request was made in a second`) ;
+        console.log(response)
+        return response.json()
+    })
     .then(data => {
         console.log(data);
+        console.log(`You are in ${data.city}, ${data.country}`)
         return data
+    })
+    .catch(err => {
+        console.log(`Error: ${err}`)
     })
 }
 
-whereAmI();
+// whereAmI();
