@@ -182,12 +182,12 @@ const getCountryData = function (country) {
     })
 }; */
 
-btn.addEventListener('click', function () {
+/* btn.addEventListener('click', function () {
     getCountryData('nigeria');
     // getCountryData('australia');
     // getCountryData('dfdsfagar');
     // getPosition() ;
-})
+}) */
 // getCountryData('germany');
 
 
@@ -299,4 +299,37 @@ const getPosition = function () {
     })
 }
 getPosition().then(position => console.log(position)).catch(err => console.log(err)) ;
-console.log("Getting Position")
+
+const whereAmI = function(){
+    getPosition().then(position => {
+        const {latitude, longitude} = position.coords;
+        return fetch(`https://geocode.xyz/${latitude},${longitude}?geoit=json`)
+    })
+    .then(response => {
+        if(!response.ok) throw new Error(`Too many request was made in a second`) ;
+        console.log(response)
+        return response.json()
+    })
+    .then(data => {
+        console.log(data);
+        console.log(`You are in ${data.city}, ${data.country}`)
+        return fetch(`https://restcountries.com/v2/name/${data.country}`)
+    })
+    .then(response => {
+        if(!response.ok) {
+            throw new Error(`Country Not Found ${response.status} ${response.statusText}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        renderCountry(data[0]) 
+    })
+    .catch(err => {
+        console.log(`Error: ${err.message}`)
+    })
+    .finally(() => {
+        countriesContainer.style.opacity = 1;
+    })
+} ;
+
+btn.addEventListener('click', whereAmI)
