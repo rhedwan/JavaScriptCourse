@@ -190,22 +190,8 @@ btn.addEventListener('click', function () {
 })
 // getCountryData('germany');
 
-const renderGeo = function (data , className='') {
-    const html = `
-    <article class="country ${className}">
-        <div class="country__data">
-        <h3 class="country__name">${data.city}</h3>
-        <h4 class="country__region">${data.country}</h4>
-        
-        </div>
-    </article>
-    `;
-    
-    countriesContainer.insertAdjacentHTML('beforeend', html);
-    // countriesContainer.style.opacity = 1;
-};
 
-const getPosition = function () {
+/* const getPosition = function () {
     navigator.geolocation.getCurrentPosition(function(position){
         const {latitude, longitude} = position.coords;;     
         // whereAmI(latitude, longitude);
@@ -249,3 +235,14 @@ whereAmI(12.8797,77.5880);
 whereAmI(52.508, 13.381);
 whereAmI(19.037, 72.873);
 whereAmI(-33.933, 18.474);
+ */
+
+// Event loop in pratice
+// Event loop is a series of events that happen in a specific order.
+// The event loop is a single thread.
+console.log('Test start') ;
+setTimeout(() => {
+    console.log('0 sec tiner') ;
+}, 0);
+Promise.resolve('Resolved Promise 1').then(res => console.log(res)) ;
+console.log('Test end') ;
