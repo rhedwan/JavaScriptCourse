@@ -184,10 +184,26 @@ const getCountryData = function (country) {
 
 btn.addEventListener('click', function () {
     // getCountryData('nigeria');
-    getCountryData('australia');
+    // getCountryData('australia');
     // getCountryData('dfdsfagar');
+    getPosition() ;
 })
 // getCountryData('germany');
+
+const renderGeo = function (data , className='') {
+    const html = `
+    <article class="country ${className}">
+        <div class="country__data">
+        <h3 class="country__name">${data.city}</h3>
+        <h4 class="country__region">${data.country}</h4>
+        
+        </div>
+    </article>
+    `;
+    
+    countriesContainer.insertAdjacentHTML('beforeend', html);
+    // countriesContainer.style.opacity = 1;
+};
 
 const getPosition = function () {
     navigator.geolocation.getCurrentPosition(function(position){
@@ -198,7 +214,7 @@ const getPosition = function () {
         alert('Geolocation is not supported by this browser.');
     })
 }
-getPosition();
+// getPosition();
 
 const whereAmI = function(latitude, longitude){
     
@@ -212,10 +228,14 @@ const whereAmI = function(latitude, longitude){
     .then(data => {
         console.log(data);
         console.log(`You are in ${data.city}, ${data.country}`)
+        renderGeo(data) ;
         return data
     })
     .catch(err => {
         console.log(`Error: ${err}`)
+    })
+    .finally(() => {
+        countriesContainer.style.opacity = 1;
     })
 }
 
