@@ -8,9 +8,9 @@ const countriesContainer = document.querySelector('.countries');
 /* const getCountryData = function (country) {
     
     const request = new XMLHttpRequest() ;
-    request.open('GET', `https://restcountries.com/v2/name/${country}`);
+    request.open('GET', `https://imgtcountries.com/v2/name/${country}`);
     request.send();
-    console.log(request.responseText);
+    console.log(request.imgponseText);
 
     request.addEventListener('load', function(){
         const [data] = JSON.parse(this.responseText);
@@ -335,6 +335,12 @@ const whereAmI = function(){
 btn.addEventListener('click', whereAmI) */
 const imgContainer = document.querySelector('.images');
 
+const wait = function(seconds){
+    return new Promise(function(resolve){
+        setTimeout(resolve, seconds * 1000)
+    })
+};
+
 const createImage = function (imgPath) {
     return new Promise(function(resolve, reject){
         const img  = document.createElement('img') ;
@@ -348,7 +354,19 @@ const createImage = function (imgPath) {
         })
     })
 };
+let currentImg;
+
 // createImage(``)
 createImage(`img/img-1.jpg`)
-.then(res => console.log(res))
-.catch(err => console.log(`Error: ${err.message}`))
+.then(img => {
+    currentImg = img ;
+    console.log('Image 1 loaded') ;
+    return wait(2)
+})
+.then(() =>{
+    currentImg.style.display ='none'
+} )
+.catch(err => console.error(`Error: ${err.message}`))
+
+
+
