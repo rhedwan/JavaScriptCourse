@@ -379,11 +379,24 @@ createImage(`img/img-1.jpg`)
 
  */
 
-const whereAmI = async function(country){
-    const response = await fetch(`https://restcountries.com/v2/name/${country}`) ;
+const getPosition = function () {
+    return new Promise(function (resolve, reject) {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    })
+};
+
+const whereAmI = async function(){
+    // Geolocation
+    const {latitude, longitude} = await getPosition() ;
+
+    // Reversing geocoding
+    const geoResponse = await fetch(`https://geocode.xyz/${latitude},${longitude}?geoit=json`) ;
+    const geocodeData = await geoResponse.json() ;
+
+    // Fetching country data
+    const response = await fetch(`https://restcountries.com/v2/name/${geocodeData.standard.countryname}`) ;
     const data = await response.json() ;
-    console.log(response) ;
     renderCountry(data[0]) ;
 };
-whereAmI('India');
+whereAmI();
 console.log('FIRST') ;
