@@ -52,7 +52,7 @@ const renderCountry = function (data , className='') {
     `;
     
     countriesContainer.insertAdjacentHTML('beforeend', html);
-    // countriesContainer.style.opacity = 1;
+    countriesContainer.style.opacity = 1;
 };
 
 const renderError = function (msg) {
@@ -333,7 +333,7 @@ const whereAmI = function(){
 } ;
 
 btn.addEventListener('click', whereAmI) */
-const imgContainer = document.querySelector('.images');
+/* const imgContainer = document.querySelector('.images');
 
 const wait = function(seconds){
     return new Promise(function(resolve){
@@ -377,5 +377,13 @@ createImage(`img/img-1.jpg`)
 } )
 .catch(err => console.error(`Error: ${err.message}`))
 
+ */
 
-
+const whereAmI = async function(country){
+    const response = await fetch(`https://restcountries.com/v2/name/${country}`) ;
+    const data = await response.json() ;
+    console.log(response) ;
+    renderCountry(data[0]) ;
+};
+whereAmI('India');
+console.log('FIRST') ;
