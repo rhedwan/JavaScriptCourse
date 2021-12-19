@@ -183,10 +183,10 @@ const getCountryData = function (country) {
 }; */
 
 btn.addEventListener('click', function () {
-    // getCountryData('nigeria');
+    getCountryData('nigeria');
     // getCountryData('australia');
     // getCountryData('dfdsfagar');
-    getPosition() ;
+    // getPosition() ;
 })
 // getCountryData('germany');
 
@@ -208,7 +208,7 @@ const renderGeo = function (data , className='') {
 const getPosition = function () {
     navigator.geolocation.getCurrentPosition(function(position){
         const {latitude, longitude} = position.coords;;     
-        whereAmI(latitude, longitude);
+        // whereAmI(latitude, longitude);
         return position;
     }, function () {
         alert('Geolocation is not supported by this browser.');
@@ -243,4 +243,9 @@ const whereAmI = function(latitude, longitude){
     .finally(() => {
         countriesContainer.style.opacity = 1;
     })
-}
+} ;
+
+whereAmI(12.8797,77.5880);
+whereAmI(52.508, 13.381);
+whereAmI(19.037, 72.873);
+whereAmI(-33.933, 18.474);
