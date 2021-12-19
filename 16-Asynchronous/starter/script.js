@@ -285,7 +285,7 @@ wait(2).then(res => {
 
 Promise.resolve('abc').then(x => console.log(x));
 Promise.reject(new Error('Problem!')).catch(x => console.log(x)); */
-
+/* 
 // Promisifying Geolocation
 const getPosition = function () {
     return new Promise(function (resolve, reject) {
@@ -332,4 +332,18 @@ const whereAmI = function(){
     })
 } ;
 
-btn.addEventListener('click', whereAmI)
+btn.addEventListener('click', whereAmI) */
+
+const createImage = function (imgPath) {
+    const img  = document.createElement('img') ;
+    const images = document.querySelector('.images');
+    img.src = imgPath ;
+    console.log(img) ;
+    img.addEventListener('load', function () {
+        images.appendChild(img);    
+        return new Promise(function(resolve, reject){
+            resolve(img);
+        })
+    })
+};
+createImage(`img/img-1.jpg`);
