@@ -365,6 +365,12 @@ createImage(`img/img-1.jpg`)
 })
 .then(() =>{
     currentImg.style.display ='none'
+    return createImage(`img/img-2.jpg`)
+    .then((nextImg) => {
+        currentImg = nextImg ;
+        currentImg.style.display = 'flex' ;
+        console.log('Image 2 loaded') ;
+    })
 } )
 .catch(err => console.error(`Error: ${err.message}`))
 
