@@ -214,11 +214,9 @@ const getPosition = function () {
         alert('Geolocation is not supported by this browser.');
     })
 }
-// getPosition();
 
 const whereAmI = function(latitude, longitude){
-    
-    
+     
     fetch(`https://geocode.xyz/${latitude},${longitude}?geoit=json`)
     .then(response => {
         if(!response.ok) throw new Error(`Too many request was made in a second`) ;
@@ -246,5 +244,3 @@ const whereAmI = function(latitude, longitude){
         countriesContainer.style.opacity = 1;
     })
 }
-
-// whereAmI();
