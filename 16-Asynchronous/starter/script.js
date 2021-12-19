@@ -251,7 +251,7 @@ Promise.resolve('Resolved Promise 2').then(res =>{
     console.log(res)
 }) ;
 console.log('Test end') ; */
-
+/* 
 const lotteryPromise = new Promise(function (resolve, reject) {
     console.log('Lottery draw is happening 💥💥💥');
     setTimeout(() => {
@@ -284,4 +284,19 @@ wait(2).then(res => {
 })
 
 Promise.resolve('abc').then(x => console.log(x));
-Promise.reject(new Error('Problem!')).catch(x => console.log(x));
+Promise.reject(new Error('Problem!')).catch(x => console.log(x)); */
+
+// Promisifying Geolocation
+const getPosition = function () {
+    return new Promise(function (resolve, reject) {
+    //     navigator.geolocation.getCurrentPosition(position => {
+    //         console.log(position);  
+    //         resolve(position);
+    //     }, () => reject(new Error('Geolocation is not supported by this browser.')))
+    // })
+        
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+    })
+}
+getPosition().then(position => console.log(position)).catch(err => console.log(err)) ;
+console.log("Getting Position")
