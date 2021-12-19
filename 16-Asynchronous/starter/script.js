@@ -232,7 +232,7 @@ const whereAmI = function(latitude, longitude){
         return data
     })
     .catch(err => {
-        console.log(`Error: ${err}`)
+        console.log(`Error: ${err.message}`)
     })
     .finally(() => {
         countriesContainer.style.opacity = 1;
