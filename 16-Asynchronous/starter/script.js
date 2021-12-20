@@ -407,10 +407,15 @@ const whereAmI = async function(){
         renderError(`Something went wrong 💥 ${err.message}`) ;
     }
 };
+// Async and Await returns a promise
 console.log('1: Will get location') ;
-const city = whereAmI();
-console.log(city) ;
-console.log('2: Finished getting location') ;
+// const city = whereAmI();
+// console.log(city) ;
+
+whereAmI()
+.then(city => console.log(`2: ${city}`))
+.catch(err => console.error(`2: ${err.message} 💥`)) ;
+console.log('3: Finished getting location') ;
 
 /* try {
     let y = 1 ;
