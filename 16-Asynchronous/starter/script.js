@@ -386,26 +386,37 @@ const getPosition = function () {
 };
 
 const whereAmI = async function(){
-    // Geolocation
-    const {latitude, longitude} = await getPosition() ;
+   try{ 
+        // Geolocation
+        const {latitude, longitude} = await getPosition() ;
 
-    // Reversing geocoding
-    const geoResponse = await fetch(`https://geocode.xyz/${latitude},${longitude}?geoit=json`) ;
-    const geocodeData = await geoResponse.json() ;
+        // Reversing geocoding
+        const geoResponse = await fetch(`https://geocode.xyz/${latitude},${longitude}?geoit=json`) ;
+        if(!geoResponse.ok) throw new Error(`Too many request was made in a second`) ;
+        const geocodeData = await geoResponse.json() ;
+        console.log(geocodeData) ;
 
-    // Fetching country data
-    const response = await fetch(`https://restcountries.com/v2/name/${geocodeData.standard.countryname}`) ;
-    const data = await response.json() ;
-    renderCountry(data[0]) ;
+        // Fetching country data
+        const response = await fetch(`https://restcountries.com/v2/name/${geocodeData.standard.countryname}`) ;
+        if(!response.ok) throw new Error(`Problem getting country`) ;
+        const data = await response.json() ;
+        console.log(data) ; 
+
+        renderCountry(data[0]) ;
+    }catch(err){
+        console.error(`${err}  💥`) ;
+        renderError(`Something went wrong 💥 ${err.message}`) ;
+    }
 };
+whereAmI();
 whereAmI();
 console.log('FIRST') ;
 
-try {
+/* try {
     let y = 1 ;
     const x = 2 ;
     x = 3  ;
 }catch (err) {
     alert(err.message) ;
     console.log(err) ;
-}   
+}    */
