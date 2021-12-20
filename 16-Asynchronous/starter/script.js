@@ -390,27 +390,27 @@ const whereAmI = async function(){
         // Geolocation
         const {latitude, longitude} = await getPosition() ;
 
-        // Reversing geocoding
-        const geoResponse = await fetch(`https://geocode.xyz/${latitude},${longitude}?geoit=json`) ;
+        // Reversing geocoding 
+        const geoResponse = await fetch(`https://geocode.xyz/51.50354,-0.12768?geoit=json`) ;
         if(!geoResponse.ok) throw new Error(`Too many request was made in a second`) ;
         const geocodeData = await geoResponse.json() ;
-        console.log(geocodeData) ;
 
         // Fetching country data
-        const response = await fetch(`https://restcountries.com/v2/name/${geocodeData.standard.countryname}`) ;
+        const response = await fetch(`https://restcountries.com/v2/name/${geocodeData.country}`) ;
         if(!response.ok) throw new Error(`Problem getting country`) ;
         const data = await response.json() ;
-        console.log(data) ; 
 
         renderCountry(data[0]) ;
+        return `You're in ${geocodeData.city}, ${geocodeData.country}` ;
     }catch(err){
         console.error(`${err}  💥`) ;
         renderError(`Something went wrong 💥 ${err.message}`) ;
     }
 };
-whereAmI();
-whereAmI();
-console.log('FIRST') ;
+console.log('1: Will get location') ;
+const city = whereAmI();
+console.log(city) ;
+console.log('2: Finished getting location') ;
 
 /* try {
     let y = 1 ;
