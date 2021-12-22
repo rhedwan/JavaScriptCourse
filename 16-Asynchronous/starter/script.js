@@ -420,7 +420,7 @@ console.log('1: Will get location') ;
 // .catch(err => console.error(`2: ${err.message} 💥`)) 
 // .finally(() => console.log('3: Finished getting location')) ;
 
-(async function(){
+/* (async function(){
     try{
         const city = await whereAmI()
         console.log(`2: ${city}`)
@@ -428,7 +428,7 @@ console.log('1: Will get location') ;
         console.error(`${err}  💥`)
     } ;
     console.log('3: Finished getting location')
-})()
+})() */
 /* try {
     let y = 1 ;
     const x = 2 ;
@@ -437,3 +437,16 @@ console.log('1: Will get location') ;
     alert(err.message) ;
     console.log(err) ;
 }    */
+
+const get3Countries = async function (c1, c2, c3) {
+    try{
+        const  [data1] = await getJSON(`https://restcountries.com/v2/name/${c1}`) ;
+        const  [data2] = await getJSON(`https://restcountries.com/v2/name/${c2}`) ;
+        const  [data3] = await getJSON(`https://restcountries.com/v2/name/${c3}`) ;
+        console.log([data1.capital, data2.capital, data3.capital])
+    }catch(err){
+        console.log(err)
+    }
+};
+
+get3Countries('ghana', 'canada', 'portugal')
