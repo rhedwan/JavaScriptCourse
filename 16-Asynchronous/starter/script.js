@@ -458,4 +458,5 @@ const get3Countries = async function (c1, c2, c3) {
     }
 };
 
-get3Countries('ghana', 'canada', 'portugal')
+get3Countries('ghana', 'canada', 'portugal');
+get3Countries('nigeria', 'japan', 'china');
