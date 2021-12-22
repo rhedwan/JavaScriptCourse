@@ -411,7 +411,7 @@ const whereAmI = async function(){
     }
 };
 // Async and Await returns a promise
-console.log('1: Will get location') ;
+// console.log('1: Will get location') ;
 // const city = whereAmI();
 // console.log(city) ;
 
@@ -462,15 +462,16 @@ get3Countries('ghana', 'canada', 'portugal');
 get3Countries('nigeria', 'japan', 'china'); */
 
 // Promise.race
-(async function () {
+/* (async function () {
     const res = await Promise.race([
         getJSON(`https://restcountries.com/v2/name/italy`),
         getJSON(`https://restcountries.com/v2/name/mexico`),
         getJSON(`https://restcountries.com/v2/name/niger`)
     ])
     console.log(res[0])
-})()
+})() */
 
+/* 
 const timeout = function (sec) {
   return new Promise(function (_, reject) {
       setTimeout(() => {
@@ -478,7 +479,6 @@ const timeout = function (sec) {
       }, sec * 1000);
   })  
 };
-
 Promise.race([
     getJSON(`https://restcountries.com/v2/name/tanzania`),
     timeout(2)
@@ -503,3 +503,5 @@ Promise.any([
 ])
 .then(res => console.log(res))
 .catch(err => console.error(err))
+ */
+
