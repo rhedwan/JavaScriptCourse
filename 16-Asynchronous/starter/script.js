@@ -481,5 +481,25 @@ const timeout = function (sec) {
 
 Promise.race([
     getJSON(`https://restcountries.com/v2/name/tanzania`),
-    timeout(1)
-]).then(res => console.log(res[0])).catch(err => console.error(err))
+    timeout(2)
+])
+.then(res => console.log(res[0]))
+.catch(err => console.error(err))
+
+// Promise.allSettled
+Promise.allSettled([
+    Promise.resolve('Success'),
+    Promise.reject('Error'),
+    Promise.resolve('Another success'),
+])
+.then(res => console.log(res))
+.catch(err => console.error(err))
+
+// Promise.any
+Promise.any([
+    Promise.resolve('Success'),
+    Promise.reject('Error'),
+    Promise.resolve('Another success'),
+])
+.then(res => console.log(res))
+.catch(err => console.error(err))
