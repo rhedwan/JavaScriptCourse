@@ -11,6 +11,12 @@ console.log('Importing module') ;
 // ShoppingCart.addToCart('breads', 5) ;
 // console.log(ShoppingCart.totalPrice)
 
-import add, {addToCart, totalPrice as price, tq} from './shopppingCart.js';
+// import add, {addToCart, totalPrice as price, tq} from './shopppingCart.js';
+// console.log(price);
+
+import add, {cart} from './shopppingCart.js';
 add('pizza', 2) ;
-console.log(price);
+add('bread', 2) ;
+add('apples', 2) ;
+
+console.log(cart) ;
