@@ -9,3 +9,4 @@ console.log('Importing module') ;
 import *  as ShoppingCart from './shopppingCart.js';
 
 ShoppingCart.addToCart('breads', 5) ;
+console.log(ShoppingCart.totalPrice)
