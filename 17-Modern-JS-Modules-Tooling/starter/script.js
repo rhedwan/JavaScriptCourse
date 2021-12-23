@@ -51,7 +51,7 @@ console.log(lastPost);
 // lastPost.then(last => console.log(last));
 
 
-const shoppingCart2 = (function () {
+/* const shoppingCart2 = (function () {
 
     const cart = [] ;
     const shippingCost = 10 ;
@@ -80,5 +80,13 @@ const shoppingCart2 = (function () {
 shoppingCart2.addToCart('apple', 4);
 shoppingCart2.addToCart('pizza', 4);
 console.log(shoppingCart2);
-console.log(shoppingCart2.shippingCost);
+console.log(shoppingCart2.shippingCost); */
 
+// // Export 
+// export.addToCart function (product, quantity){
+//     cart.push({product, quantity});
+//     console.log(`${quantity} ${product} added to cart`) ;
+// };
+
+// // Import 
+// const {addToCart} = require('./shopppingCart.js');
