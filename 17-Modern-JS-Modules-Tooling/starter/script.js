@@ -6,7 +6,10 @@
 console.log('Importing module') ;
 // console.log(shippingCost) ;
 
-import *  as ShoppingCart from './shopppingCart.js';
+// import *  as ShoppingCart from './shopppingCart.js';
 
-ShoppingCart.addToCart('breads', 5) ;
-console.log(ShoppingCart.totalPrice)
+// ShoppingCart.addToCart('breads', 5) ;
+// console.log(ShoppingCart.totalPrice)
+
+import add from './shopppingCart.js';
+add('pizza', 2) ;
