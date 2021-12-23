@@ -20,3 +20,13 @@ add('bread', 2) ;
 add('apples', 2) ;
 
 console.log(cart) ;
+
+// Fetch and then
+// const posts = await fetch('https://jsonplaceholder.typicode.com/posts')
+// .then(response => response.json())
+// .then(data => console.log(data))
+
+// Top-level await
+const posts = await fetch('https://jsonplaceholder.typicode.com/posts')
+const data = await posts.json()
+console.log(data)
