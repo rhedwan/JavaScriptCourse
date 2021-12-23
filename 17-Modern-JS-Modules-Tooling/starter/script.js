@@ -27,6 +27,26 @@ console.log(cart) ;
 // .then(data => console.log(data))
 
 // Top-level await
-const posts = await fetch('https://jsonplaceholder.typicode.com/posts')
-const data = await posts.json()
-console.log(data)
+// const posts = await fetch('https://jsonplaceholder.typicode.com/posts')
+// const data = await posts.json()
+// console.log(data);
+// console.log('Something') ;
+
+const getLastPost = async function () {
+    const posts = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const data = await posts.json() ;
+    console.log(data);
+    return {
+        title: data.at(-1).title, 
+        text: data.at(-1).body
+    }
+};
+
+// Calling an async function returns Promise
+const lastPost = await getLastPost() ;
+console.log(lastPost);
+
+// Not very clean
+// const lastPost = getLastPost() ;
+// lastPost.then(last => console.log(last));
+
