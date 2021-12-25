@@ -28,21 +28,21 @@ addExpense(100, 'Going to movies 🍿', 'Matilda');
 addExpense(200, 'Stuff', 'Jay');
 console.log(budget);
 
-const check = function () {
-  for (const el of budget) {
+const checkExpenses = function () {
+  for (const entry of budget) {
     let lim;
-    if (spendingLimits[el.user]) {
-      lim = spendingLimits[el.user];
+    if (spendingLimits[entry.user]) {
+      lim = spendingLimits[entry.user];
     } else {
       lim = 0;
     }
 
-    if (el.value < -lim) {
-      el.flag = 'limit';
+    if (entry.value < -lim) {
+      entry.flag = 'limit';
     }
   }
 };
-check();
+checkExpenses();
 
 console.log(budget);
 
