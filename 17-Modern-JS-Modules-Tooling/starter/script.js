@@ -92,4 +92,6 @@ console.log(shoppingCart2.shippingCost); */
 // const {addToCart} = require('./shopppingCart.js');
 
 
-import 'core-js/stable';
+// import 'core-js/stable';
+import 'core-js/stable/array/from';
+import 'core-js/stable/promise';
