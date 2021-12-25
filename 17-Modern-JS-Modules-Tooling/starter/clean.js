@@ -14,32 +14,29 @@ const spendingLimits = {
   matilda: 100,
 };
 
+const getLimit = user => spendingLimits?.[user] ?? 0;
 const addExpense = function (value, description, user= 'jonas') {
   user = user.toLowerCase();
 
   // const limit = spendingLimits[user] ? spendingLimits[user] : 0;
-  const limit = spendingLimits?.[user] ?? 0;
-  if (value <= limit ) {
+  // const limit = spendingLimits?.[user] ?? 0;
+
+  if (value <= getLimit(user)) {
     budget.push({ value: -value, description, user});
   }
 };
 addExpense(10, 'Pizza 🍕');
 addExpense(100, 'Going to movies 🍿', 'Matilda');
 addExpense(200, 'Stuff', 'Jay');
-console.log(budget);
 
 const checkExpenses = function () {
   for (const entry of budget) {
-    const limit = spendingLimits?.[entry.user] ?? 0;
-    
-    if (entry.value < -limit) {
+    if (entry.value < getLimit(entry.user)) {
       entry.flag = 'limit';
     }
   }
 };
 checkExpenses();
-
-console.log(budget);
 
 const bigExpenses = function (limit) {
   let output = '';
@@ -51,4 +48,6 @@ const bigExpenses = function (limit) {
   output = output.slice(0, -2); // Remove last '/ '
   console.log(output);
 };
+
+console.log(budget);
 bigExpenses(1000);
