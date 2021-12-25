@@ -95,3 +95,5 @@ console.log(shoppingCart2.shippingCost); */
 // import 'core-js/stable';
 import 'core-js/stable/array/from';
 import 'core-js/stable/promise';
+
+import 'regenerator-runtime/runtime';
