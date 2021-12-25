@@ -6,7 +6,7 @@
 // anything defined in a previous bundle is accessed via the
 // orig method which is the require for previous bundles
 
-(function (modules, entry, mainEntry, parcelRequireName, globalName) {
+(function(modules, entry, mainEntry, parcelRequireName, globalName) {
   /* eslint-disable no-undef */
   var globalObject =
     typeof globalThis !== 'undefined'
@@ -99,9 +99,9 @@
   newRequire.modules = modules;
   newRequire.cache = cache;
   newRequire.parent = previousRequire;
-  newRequire.register = function (id, exports) {
+  newRequire.register = function(id, exports) {
     modules[id] = [
-      function (require, module) {
+      function(require, module) {
         module.exports = exports;
       },
       {},
@@ -109,7 +109,7 @@
   };
 
   Object.defineProperty(newRequire, 'root', {
-    get: function () {
+    get: function() {
       return globalObject[parcelRequireName];
     },
   });
@@ -131,7 +131,7 @@
 
       // RequireJS
     } else if (typeof define === 'function' && define.amd) {
-      define(function () {
+      define(function() {
         return mainExports;
       });
 
@@ -140,12 +140,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"4WxDl":[function(require,module,exports) {
+})({"1Osjd":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
-var HMR_ENV_HASH = "4a236f9275d0a351";
-module.bundle.HMR_BUNDLE_ID = "af83c2965d140dba";
+var HMR_ENV_HASH = "69f74e7f31319ffd";
+module.bundle.HMR_BUNDLE_ID = "ed62dd24849b6a7f";
 "use strict";
 function _createForOfIteratorHelper(o, allowArrayLike) {
     var it;
@@ -153,7 +153,7 @@ function _createForOfIteratorHelper(o, allowArrayLike) {
         if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
             if (it) o = it;
             var i = 0;
-            var F = function F() {
+            var F = function F1() {
             };
             return {
                 s: F,
@@ -283,7 +283,7 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
         var data = JSON.parse(event.data);
         if (data.type === 'update') {
             // Remove error overlay if there is one
-            if (typeof document !== 'undefined') removeErrorOverlay();
+            removeErrorOverlay();
             var assets = data.assets.filter(function(asset) {
                 return asset.envHash === HMR_ENV_HASH;
             }); // Handle HMR Update
@@ -309,18 +309,15 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
                     var ansiDiagnostic = _step.value;
                     var stack = ansiDiagnostic.codeframe ? ansiDiagnostic.codeframe : ansiDiagnostic.stack;
                     console.error('🚨 [parcel]: ' + ansiDiagnostic.message + '\n' + stack + '\n\n' + ansiDiagnostic.hints.join('\n'));
-                }
+                } // Render the fancy html overlay
             } catch (err) {
                 _iterator.e(err);
             } finally{
                 _iterator.f();
             }
-            if (typeof document !== 'undefined') {
-                // Render the fancy html overlay
-                removeErrorOverlay();
-                var overlay = createErrorOverlay(data.diagnostics.html); // $FlowFixMe
-                document.body.appendChild(overlay);
-            }
+            removeErrorOverlay();
+            var overlay = createErrorOverlay(data.diagnostics.html); // $FlowFixMe
+            document.body.appendChild(overlay);
         }
     };
     ws.onerror = function(e) {
@@ -346,9 +343,9 @@ function createErrorOverlay(diagnostics) {
         for(_iterator2.s(); !(_step2 = _iterator2.n()).done;){
             var diagnostic = _step2.value;
             var stack = diagnostic.codeframe ? diagnostic.codeframe : diagnostic.stack;
-            errorHTML += "\n      <div>\n        <div style=\"font-size: 18px; font-weight: bold; margin-top: 20px;\">\n          \uD83D\uDEA8 ".concat(diagnostic.message, "\n        </div>\n        <pre>").concat(stack, "</pre>\n        <div>\n          ").concat(diagnostic.hints.map(function(hint) {
-                return '<div>💡 ' + hint + '</div>';
-            }).join(''), "\n        </div>\n        ").concat(diagnostic.documentation ? "<div>\uD83D\uDCDD <a style=\"color: violet\" href=\"".concat(diagnostic.documentation, "\" target=\"_blank\">Learn more</a></div>") : '', "\n      </div>\n    ");
+            errorHTML += "\n      <div>\n        <div style=\"font-size: 18px; font-weight: bold; margin-top: 20px;\">\n          \uD83D\uDEA8 ".concat(diagnostic.message, "\n        </div>\n        <pre>\n          ").concat(stack, "\n        </pre>\n        <div>\n          ").concat(diagnostic.hints.map(function(hint) {
+                return '<div>' + hint + '</div>';
+            }).join(''), "\n        </div>\n      </div>\n    ");
         }
     } catch (err) {
         _iterator2.e(err);
@@ -402,17 +399,18 @@ function reloadCSS() {
 function hmrApply(bundle, asset) {
     var modules = bundle.modules;
     if (!modules) return;
-    if (asset.type === 'css') reloadCSS();
-    else if (asset.type === 'js') {
-        var deps = asset.depsByBundle[bundle.HMR_BUNDLE_ID];
-        if (deps) {
-            var fn = new Function('require', 'module', 'exports', asset.output);
-            modules[asset.id] = [
-                fn,
-                deps
-            ];
-        } else if (bundle.parent) hmrApply(bundle.parent, asset);
+    if (asset.type === 'css') {
+        reloadCSS();
+        return;
     }
+    var deps = asset.depsByBundle[bundle.HMR_BUNDLE_ID];
+    if (deps) {
+        var fn = new Function('require', 'module', 'exports', asset.output);
+        modules[asset.id] = [
+            fn,
+            deps
+        ];
+    } else if (bundle.parent) hmrApply(bundle.parent, asset);
 }
 function hmrAcceptCheck(bundle, id, depsByBundle) {
     var modules = bundle.modules;
@@ -423,7 +421,7 @@ function hmrAcceptCheck(bundle, id, depsByBundle) {
         if (!bundle.parent) return true;
         return hmrAcceptCheck(bundle.parent, id, depsByBundle);
     }
-    if (checkedAssets[id]) return true;
+    if (checkedAssets[id]) return;
     checkedAssets[id] = true;
     var cached = bundle.cache[id];
     assetsToAccept.push([
@@ -431,9 +429,7 @@ function hmrAcceptCheck(bundle, id, depsByBundle) {
         id
     ]);
     if (cached && cached.hot && cached.hot._acceptCallbacks.length) return true;
-    var parents = getParents(module.bundle.root, id); // If no parents, the asset is new. Prevent reloading the page.
-    if (!parents.length) return true;
-    return parents.some(function(v) {
+    return getParents(module.bundle.root, id).some(function(v) {
         return hmrAcceptCheck(v[0], v[1], null);
     });
 }
@@ -458,7 +454,7 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"8fvzf":[function(require,module,exports) {
+},{}],"eoBgn":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 // console.log(shippingCost) ;
 // import *  as ShoppingCart from './shopppingCart.js';
@@ -494,10 +490,10 @@ const getLastPost = async function() {
         title: data.at(-1).title,
         text: data.at(-1).body
     };
-};
-// Calling an async function returns Promise
-const lastPost = await getLastPost();
-console.log(lastPost); // Not very clean
+}; // Calling an async function returns Promise
+ // const lastPost = await getLastPost() ;
+ // console.log(lastPost);
+ // Not very clean
  // const lastPost = getLastPost() ;
  // lastPost.then(last => console.log(last));
  /* const shoppingCart2 = (function () {
@@ -537,7 +533,7 @@ console.log(shoppingCart2.shippingCost); */  // // Export
  // // Import 
  // const {addToCart} = require('./shopppingCart.js');
 
-},{"./shopppingCart.js":"hnvOC","@parcel/transformer-js/src/esmodule-helpers.js":"9r0cb"}],"hnvOC":[function(require,module,exports) {
+},{"./shopppingCart.js":"hlvh7","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"hlvh7":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "cart", ()=>cart
@@ -573,7 +569,7 @@ exports.default = function(product, quantity) {
     console.log(`${quantity} ${product} added to cart`);
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"9r0cb"}],"9r0cb":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"JacNc":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -586,7 +582,9 @@ exports.defineInteropFlag = function(a) {
 };
 exports.exportAll = function(source, dest) {
     Object.keys(source).forEach(function(key) {
-        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
+        if (key === 'default' || key === '__esModule') return;
+        // Skip duplicate re-exports when they have the same value.
+        if (key in dest && dest[key] === source[key]) return;
         Object.defineProperty(dest, key, {
             enumerable: true,
             get: function() {
@@ -603,6 +601,6 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["4WxDl","8fvzf"], "8fvzf", "parcelRequire7e89")
+},{}]},["1Osjd","eoBgn"], "eoBgn", "parcelRequireeb47")
 
-//# sourceMappingURL=index.5d140dba.js.map
+//# sourceMappingURL=index.849b6a7f.js.map

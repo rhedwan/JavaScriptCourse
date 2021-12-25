@@ -43,8 +43,8 @@ const getLastPost = async function () {
 };
 
 // Calling an async function returns Promise
-const lastPost = await getLastPost() ;
-console.log(lastPost);
+// const lastPost = await getLastPost() ;
+// console.log(lastPost);
 
 // Not very clean
 // const lastPost = getLastPost() ;
