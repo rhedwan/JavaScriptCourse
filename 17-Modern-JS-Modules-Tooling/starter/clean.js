@@ -38,12 +38,11 @@ const checkExpenses = function () {
 };
 checkExpenses();
 
-const bigExpenses = function (limit) {
+const bigExpenses = function (bigLimit) {
   let output = '';
-  for (const el of budget) {
-    if (el.value <= -limit) {
-      output += el.description.slice(-2) + ' / '; // Emojis are 2 chars
-    }
+  for (const entry of budget) {
+    output += 
+    entry.value <= -bigLimit ? `${entry.description.slice(-2)} / ` : '';
   }
   output = output.slice(0, -2); // Remove last '/ '
   console.log(output);
@@ -51,3 +50,4 @@ const bigExpenses = function (limit) {
 
 console.log(budget);
 bigExpenses(1000);
+bigExpenses(100);
