@@ -24,15 +24,15 @@ const getLimit = user => spendingLimits?.[user] ?? 0;
 const addExpense = function (state, limit, value, description, user= 'jonas') {
   const cleanUser = user.toLowerCase();
 
-  if (value <= getLimit(cleanUser)) {
-    return  [...state, { value: -value, description, user: cleanUser }];
+  return (value <= getLimit(cleanUser)) ? [...state, { value: -value, description, user: cleanUser }] : state;
     // budget.push({ value: -value, description, cleanUser});
-  }
+  
 };
 const newBudget1 = addExpense(budget,spendingLimits, 10, 'Pizza 🍕');
 console.log(newBudget1);
-addExpense(budget,spendingLimits, 100, 'Going to movies 🍿', 'Matilda');
-addExpense(budget,spendingLimits, 200, 'Stuff', 'Jay');
+const newBudget2 = addExpense(newBudget1,spendingLimits, 100, 'Going to movies 🍿', 'Matilda');
+const newBudget3 = addExpense(newBudget2 ,spendingLimits, 200, 'Stuff', 'Jay');
+console.log(newBudget3);
 
 const checkExpenses = function () {
   for (const entry of budget) {
